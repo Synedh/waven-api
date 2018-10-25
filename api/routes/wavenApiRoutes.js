@@ -1,15 +1,15 @@
 'use strict';
 module.exports = function(app) {
-  var todoList = require('../controllers/wavenApiController');
+  var wavenApi = require('../controllers/wavenApiController.js');
 
   // wavenApi Routes
-  app.route('/class')
-    .get(wavenApi.list_all_classes)
-    .post(wavenApi.create_a_class);
+  app.route('/classes')
+    .get(wavenApi.list_all_races)
+    .post(wavenApi.create_a_race);
 
 
-  app.route('/class/:classId')
-    .get(wavenApi.read_a_class)
-    .put(wavenApi.update_a_class)
-    .delete(wavenApi.delete_a_class);
+  app.route('/classes/:classId')
+    .get(wavenApi.read_a_race)
+    .put(wavenApi.update_a_race)
+    .delete(wavenApi.delete_a_race);
 };

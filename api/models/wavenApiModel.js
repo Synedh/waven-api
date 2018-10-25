@@ -2,23 +2,44 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var ClassSchema = new Schema({
+var raceSchema = new Schema({
     name: {
         type: String,
-        required: 'Enter the name of the class'
+        required: 'Enter the name of the race'
     },
-    icon: {
+    portrait: {
         type: String,
-        required: 'Give the url of the icon'
     },
     image: {
         type: String,
-        required: 'Give the url of the icon'
+    },
+    background: {
+        type: String,
+    },
+    tags: {
+        type: [String],
+        validate: [arrayLimit, '{PATH} exceeds the limit of 5']
     },
     description: {
         type: String,
-        required: 'Need a short description of the class'
+        required: 'Need a short description of the race'
     }
+},
+{
+    toJSON: { 
+        virtuals: true
+    },
+    toObject: {
+        virtuals: true
+    },
 });
 
-module.export = mongoose.mode('Tasks', ClassSchema);
+raceSchema.virtual('href').get(function () {
+    return 'http://localhost:3000/classes/' + this.id;
+});
+
+function arrayLimit(val) {
+    return val.length <= 5;
+}
+
+module.export = mongoose.model('Race', raceSchema);

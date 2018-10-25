@@ -1,0 +1,34 @@
+{
+  "name": "waven-api",
+  "version": "0.1.0",
+  "description": "Global Waven game API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Synedh/waven-api.git"
+  },
+  "keywords": [
+    "REST",
+    "API",
+    "Waven",
+    "Game",
+    "NodeJS"
+  ],
+  "author": "Synedh",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Synedh/waven-api/issues"
+  },
+  "homepage": "https://github.com/Synedh/waven-api#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.3.6"
+  }
+}

@@ -5,24 +5,29 @@ var Schema = mongoose.Schema;
 var raceSchema = new Schema({
     name: {
         type: String,
+        unique: true,
         required: 'Enter the name of the race'
     },
-    portrait: {
+    portraitUrl: {
         type: String,
     },
-    image: {
-        type: String,
-    },
-    background: {
+    imageUrl: {
         type: String,
     },
     tags: {
         type: [String],
-        validate: [arrayLimit, '{PATH} exceeds the limit of 5']
     },
     description: {
         type: String,
-        required: 'Need a short description of the race'
+        required: 'Need a short description of the class'
+    },
+    weapons: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Weapon'
+    },
+    spells: {
+        type:  [Schema.Types.ObjectId],
+        ref: 'Spell'
     }
 },
 {
@@ -37,9 +42,5 @@ var raceSchema = new Schema({
 raceSchema.virtual('href').get(function () {
     return 'http://localhost:3000/classes/' + this.id;
 });
-
-function arrayLimit(val) {
-    return val.length <= 5;
-}
 
 module.export = mongoose.model('Race', raceSchema);

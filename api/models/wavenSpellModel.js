@@ -46,7 +46,7 @@ var spellSchema = new Schema({
 });
 
 spellSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/spells/' + this.id;
+    return 'http://waven-api.synedh.fr/spells/' + this.id;
 });
 
 module.export = mongoose.model('Spell', spellSchema);

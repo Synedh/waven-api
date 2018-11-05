@@ -27,7 +27,7 @@ var passiveSchema = new Schema({
 });
 
 passiveSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/passives/' + this.id;
+    return 'http://waven-api.synedh.fr/passives/' + this.id;
 });
 
 module.export = mongoose.model('Passive', passiveSchema);

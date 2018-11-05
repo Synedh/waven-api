@@ -28,6 +28,8 @@
     "nodemon": "^1.18.4"
   },
   "dependencies": {
+    "basic-auth": "^2.0.1",
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.3.6"

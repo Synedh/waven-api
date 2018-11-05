@@ -1,11 +1,10 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Weapon = mongoose.model('Weapon');
 
 exports.list_all_weapons = function(req, res) {
-  Weapon.find({}, function(err, weapon) {
+  Weapon.find(req.query, function(err, weapon) {
     if (err)
       res.send(err);
     res.json(weapon);
@@ -44,7 +43,7 @@ exports.update_a_weapon = function(req, res) {
 
 
 exports.delete_a_weapon = function(req, res) {
-  Weapon.remove({_id: req.params.weaponId}, function(err, weapon) {
+  Weapon.deleteOne({_id: req.params.weaponId}, function(err, weapon) {
     if (err)
       res.send(err);
     res.json({ message: 'Weapon successfully deleted.' });

@@ -23,7 +23,7 @@ var elementSchema = new Schema({
 });
 
 elementSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/elements/' + this.id;
+    return 'http://waven-api.synedh.fr/elements/' + this.id;
 });
 
 module.export = mongoose.model('Element', elementSchema);

@@ -56,7 +56,7 @@ var fellowSchema = new Schema({
 });
 
 fellowSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/fellows/' + this.id;
+    return 'http://waven-api.synedh.fr/fellows/' + this.id;
 });
 
 module.export = mongoose.model('Fellow', fellowSchema);

@@ -1,11 +1,10 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Transfer = mongoose.model('Transfer');
 
 exports.list_all_transfers = function(req, res) {
-  Transfer.find({}, function(err, transfer) {
+  Transfer.find(req.query, function(err, transfer) {
     if (err)
       res.send(err);
     res.json(transfer);
@@ -44,7 +43,7 @@ exports.update_a_transfer = function(req, res) {
 
 
 exports.delete_a_transfer = function(req, res) {
-  Transfer.remove({_id: req.params.transferId}, function(err, transfer) {
+  Transfer.deleteOne({_id: req.params.transferId}, function(err, transfer) {
     if (err)
       res.send(err);
     res.json({ message: 'Transfer successfully deleted.' });

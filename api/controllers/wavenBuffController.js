@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
   Buff = mongoose.model('Buff');
 
 exports.list_all_buffs = function(req, res) {
-  Buff.find({}, function(err, buff) {
+  Buff.find(req.query, function(err, buff) {
     if (err)
       res.send(err);
     res.json(buff);
@@ -43,7 +43,7 @@ exports.update_a_buff = function(req, res) {
 
 
 exports.delete_a_buff = function(req, res) {
-  Buff.remove({_id: req.params.buffId}, function(err, buff) {
+  Buff.deleteOne({_id: req.params.buffId}, function(err, buff) {
     if (err)
       res.send(err);
     res.json({ message: 'Buff successfully deleted.' });

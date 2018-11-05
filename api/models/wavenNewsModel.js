@@ -39,7 +39,7 @@ var newsSchema = new Schema({
 });
 
 newsSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/news/' + this.id;
+    return 'http://waven-api.synedh.fr/news/' + this.id;
 });
 
 module.export = mongoose.model('News', newsSchema);

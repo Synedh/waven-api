@@ -27,7 +27,7 @@ var transferSchema = new Schema({
 });
 
 transferSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/transfers/' + this.id;
+    return 'http://waven-api.synedh.fr/transfers/' + this.id;
 });
 
 module.export = mongoose.model('Transfer', transferSchema);

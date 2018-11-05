@@ -40,7 +40,7 @@ var raceSchema = new Schema({
 });
 
 raceSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/classes/' + this.id;
+    return 'http://waven-api.synedh.fr/classes/' + this.id;
 });
 
 module.export = mongoose.model('Race', raceSchema);

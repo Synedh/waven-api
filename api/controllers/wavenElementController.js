@@ -1,11 +1,10 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Element = mongoose.model('Element');
 
 exports.list_all_elements = function(req, res) {
-  Element.find({}, function(err, element) {
+  Element.find(req.query, function(err, element) {
     if (err)
       res.send(err);
     res.json(element);
@@ -44,7 +43,7 @@ exports.update_an_element = function(req, res) {
 
 
 exports.delete_an_element = function(req, res) {
-  Element.remove({_id: req.params.elementId}, function(err, element) {
+  Element.deleteOne({_id: req.params.elementId}, function(err, element) {
     if (err)
       res.send(err);
     res.json({ message: 'Element successfully deleted.' });

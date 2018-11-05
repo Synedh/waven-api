@@ -36,7 +36,7 @@ var weaponSchema = new Schema({
 });
 
 weaponSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/weapons/' + this.id;
+    return 'http://waven-api.synedh.fr/weapons/' + this.id;
 });
 
 module.export = mongoose.model('Weapon', weaponSchema);

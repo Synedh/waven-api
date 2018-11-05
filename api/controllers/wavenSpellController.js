@@ -1,11 +1,10 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Spell = mongoose.model('Spell');
 
 exports.list_all_spells = function(req, res) {
-  Spell.find({}, function(err, spell) {
+  Spell.find(req.query, function(err, spell) {
     if (err)
       res.send(err);
     res.json(spell);
@@ -44,7 +43,7 @@ exports.update_a_spell = function(req, res) {
 
 
 exports.delete_a_spell = function(req, res) {
-  Spell.remove({_id: req.params.spellId}, function(err, spell) {
+  Spell.deleteOne({_id: req.params.spellId}, function(err, spell) {
     if (err)
       res.send(err);
     res.json({ message: 'Spell successfully deleted.' });

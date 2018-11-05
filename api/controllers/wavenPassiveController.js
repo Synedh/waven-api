@@ -1,11 +1,10 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Passive = mongoose.model('Passive');
 
 exports.list_all_passives = function(req, res) {
-  Passive.find({}, function(err, passive) {
+  Passive.find(req.query, function(err, passive) {
     if (err)
       res.send(err);
     res.json(passive);
@@ -44,7 +43,7 @@ exports.update_a_passive = function(req, res) {
 
 
 exports.delete_a_passive = function(req, res) {
-  Passive.remove({_id: req.params.passiveId}, function(err, passive) {
+  Passive.deleteOne({_id: req.params.passiveId}, function(err, passive) {
     if (err)
       res.send(err);
     res.json({ message: 'Passive successfully deleted.' });

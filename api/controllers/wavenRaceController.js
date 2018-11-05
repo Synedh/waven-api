@@ -1,11 +1,10 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Race = mongoose.model('Race');
 
 exports.list_all_races = function(req, res) {
-  Race.find({}, function(err, race) {
+  Race.find(req.query, function(err, race) {
     if (err)
       res.send(err);
     res.json(race);
@@ -44,7 +43,7 @@ exports.update_a_race = function(req, res) {
 
 
 exports.delete_a_race = function(req, res) {
-  Race.remove({_id: req.params.classId}, function(err, race) {
+  Race.deleteOne({_id: req.params.classId}, function(err, race) {
     if (err)
       res.send(err);
     res.json({ message: 'Class successfully deleted.' });

@@ -1,11 +1,10 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   Fellow = mongoose.model('Fellow');
 
 exports.list_all_fellows = function(req, res) {
-  Fellow.find({}, function(err, fellow) {
+  Fellow.find(req.query, function(err, fellow) {
     if (err)
       res.send(err);
     res.json(fellow);
@@ -44,7 +43,7 @@ exports.update_a_fellow = function(req, res) {
 
 
 exports.delete_a_fellow = function(req, res) {
-  Fellow.remove({_id: req.params.fellowId}, function(err, fellow) {
+  Fellow.deleteOne({_id: req.params.fellowId}, function(err, fellow) {
     if (err)
       res.send(err);
     res.json({ message: 'Fellow successfully deleted.' });

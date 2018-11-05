@@ -27,7 +27,7 @@ var buffSchema = new Schema({
 });
 
 buffSchema.virtual('href').get(function () {
-    return 'http://localhost:3000/buffs/' + this.id;
+    return 'http://waven-api.synedh.fr/buffs/' + this.id;
 });
 
 module.export = mongoose.model('Buff', buffSchema);

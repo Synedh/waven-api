@@ -2,7 +2,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var spellSchema = new Schema({
     name: {
         type: String,
@@ -31,8 +30,8 @@ var spellSchema = new Schema({
         default: 0
     },
     resources: {
-        type: [[Schema.Types.ObjectId, Number]],
-        ref: 'Element',
+        type: [Schema.Types.ObjectId],
+        ref: 'Resource',
         default: []
     }
 },

@@ -6,6 +6,7 @@ module.exports = function(app) {
         user = require('../controllers/userController.js'),
         wavenNews = require('../controllers/wavenNewsController.js'),
         wavenElement = require('../controllers/wavenElementController.js'),
+        wavenResource = require('../controllers/wavenResourceController.js'),
         wavenBuff = require('../controllers/wavenBuffController.js'),
         wavenPassive = require('../controllers/wavenPassiveController.js'),
         wavenTransfer = require('../controllers/wavenTransferController.js'),
@@ -54,6 +55,15 @@ module.exports = function(app) {
         .get(wavenElement.read_an_element)
         .put(wavenElement.update_an_element)
         .delete(wavenElement.delete_an_element);
+
+    app.route('/resources')
+        .get(auth.basic_auth, (req, res) => wavenResource.list_all_resourcess(req, res))
+        .post(wavenResource.create_an_resource);
+
+    app.route('/resourcess/:resourcesId')
+        .get(wavenResource.read_an_resource)
+        .put(wavenResource.update_an_resource)
+        .delete(wavenResource.delete_an_resource);
 
 
     app.route('/buffs')

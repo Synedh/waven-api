@@ -9,16 +9,13 @@ var fellowSchema = new Schema({
         required: 'Enter the name of the fellow'
     },
     iconUrl: {
-        type: String,
-        required: true
+        type: String
     },
     imageUrl: {
-        type: String,
-        required: true
+        type: String
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     spells: {
         type: [Schema.Types.ObjectId],

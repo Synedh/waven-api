@@ -9,17 +9,14 @@ var spellSchema = new Schema({
         required: 'Enter the name of the spell'
     },
     iconUrl: {
-        type: String,
-        required: true
+        type: String
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     element: {
         type: Schema.Types.ObjectId,
-        ref: 'Element',
-        required: true
+        ref: 'Element'
     },
     cost: {
         type: Number,

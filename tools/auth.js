@@ -1,21 +1,22 @@
-'use strict'
+'usr strict';
 
-const basicAuth = require("basic-auth"),
-      mongoose  = require('mongoose'),
-      User      = mongoose.model('User'),
-      Role      = mongoose.model('Role');
+var basicAuth = require("basic-auth"),
+    mongoose = require('mongoose'),
+    User = mongoose.model('User'),
+    Role = mongoose.model('Role');
 
 
 function unauthorized(res) {
     res.set("WWW-Authenticate", "Basic realm=Authorization Required");
     return res.sendStatus(401);
 }
+
 function forbidden(res) {
     res.set("WWW-Authenticate", "Basic realm=Authorization Required");
     return res.sendStatus(403);
 }
 
-exports.basicAuth = function(req, res, next) {
+exports.basic_auth = function(req, res, next) {
     const user = basicAuth(req);
     if (!user || !user.name || !user.pass) {
         return unauthorized(res);

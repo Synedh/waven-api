@@ -9,8 +9,7 @@ var elementSchema = new Schema({
         required: 'Enter the name of the element'
     },
     iconUrl: {
-        type: String,
-        required: true
+        type: String
     }
 },
 {

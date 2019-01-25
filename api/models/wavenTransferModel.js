@@ -9,12 +9,10 @@ var transferSchema = new Schema({
         required: 'Enter the name of the transfer'
     },
     iconUrl: {
-        type: String,
-        required: true
+        type: String
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
 },
 {

@@ -21,9 +21,9 @@ var raceSchema = new Schema({
         type: String,
         required: 'Need a short description of the class'
     },
-    weapons: {
+    weaponTypes: {
         type: [Schema.Types.ObjectId],
-        ref: 'Weapon'
+        ref: 'WeaponType'
     },
     spells: {
         type:  [Schema.Types.ObjectId],

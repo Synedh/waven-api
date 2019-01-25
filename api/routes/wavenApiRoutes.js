@@ -1,7 +1,7 @@
     'use strict';
 
 module.exports = function(app) {
-    var auth = require('../../auth.js');
+    var auth = require('../../tools/auth.js');
     var role = require('../controllers/roleController.js'),
         user = require('../controllers/userController.js'),
         wavenNews = require('../controllers/wavenNewsController.js'),
@@ -48,7 +48,7 @@ module.exports = function(app) {
 
 
     app.route('/elements')
-        .get(auth.basic_auth, (req, res) => wavenElement.list_all_elements(req, res))
+        .get(wavenElement.list_all_elements)
         .post(wavenElement.create_an_element);
 
     app.route('/elements/:elementId')
@@ -57,7 +57,7 @@ module.exports = function(app) {
         .delete(wavenElement.delete_an_element);
 
     app.route('/resources')
-        .get(auth.basic_auth, (req, res) => wavenResource.list_all_resourcess(req, res))
+        .get(wavenResource.list_all_resources)
         .post(wavenResource.create_an_resource);
 
     app.route('/resourcess/:resourcesId')
@@ -120,7 +120,7 @@ module.exports = function(app) {
         .get(wavenWeaponType.list_all_weaponTypes)
         .post(wavenWeaponType.create_a_weaponType);
 
-    app.route('/weapons/:weaponId')
+    app.route('/weaponTypes/:weaponTypeId')
         .get(wavenWeaponType.read_a_weaponType)
         .put(wavenWeaponType.update_a_weaponType)
         .delete(wavenWeaponType.delete_a_weaponType);

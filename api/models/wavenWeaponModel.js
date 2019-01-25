@@ -9,21 +9,17 @@ var weaponSchema = new Schema({
         required: 'Enter the name of the weapon'
     },
     iconUrl: {
-        type: String,
-        required: true
+        type: String
     },
     imageUrl: {
-        type: String,
-        required: true
+        type: String
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     weaponType: {
         type: Schema.Types.ObjectId,
-        ref: 'WeaponType',
-        required: true
+        ref: 'WeaponType'
     }
 },
 {

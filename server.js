@@ -4,6 +4,7 @@ var express     = require('express'),
     bodyParser  = require('body-parser'),
     app         = express(),
     port        = process.env.PORT || 3000,
+    http        = require('http').Server(app),
     Role        = require('./api/models/roleModel'),
     User        = require('./api/models/userModel'),
     News        = require('./api/models/wavenNewsModel'),
@@ -36,6 +37,13 @@ app.use(auth.basic_auth);
 
 routes(app); //register routes
 
-app.listen(port);
+// No route where found => 404.
+app.use(function(req, res) {
+    res.status(404)
+        .json({error: 'Cannot ' + req.method + ' ' + req.originalUrl + '.'});
+});
 
-console.log('Waven RESTful API server started on: ' + port);
+http.listen(port, function() {
+    console.log('Waven RESTful API server started on: ' + port);
+});
+

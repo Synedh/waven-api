@@ -1,50 +1,51 @@
-Sinistro Air;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_sinistro.png;Construisez un SINISTRO ayant 2 BL (limité à 1)​. APPARITION : Piochez 1 sort​.;2;;+1 Air | 3PO
-Choc Temporel;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_choctemporel.png;Inflige 0 dégât et applique l’état ÉVENTÉ.​;2;;+1 Air
-Frappe Temporelle;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_frappetemporelle.png;Inflige 2 dégâts​. Repousse la cible de 2 cases si elle sous l’état ÉVENTÉ.​;3;;+1 Air
-Alignement;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_alignement.png;Inflige 4 dégâts​. REMBOBINAGE​.​;5;;+2 Air
-Flétrissement;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_fletrissement.png;Inflige 1 dégât et applique l’état ÉVENTÉ.​;4;1;+1 Air
-Téléportation Forcée;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_teleportationforcee.png;Téléporte un adversaire jusqu’à 3 cases et lui inflige 3 dégâts.​​;5;;+2 Air
-Téléportation Courte;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_teleportationcourte.png;Téléportez votre héros jusqu’à 2 cases. Il inflige ensuite 1 dégât autour de lui. ;3;;+1 Air
-Téléportation Longue;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_teleportationLongue.png;Téléporte votre héros jusqu’à 4 cases dans la zone d’effet d’un SINISTRO allié Il inflige ensuite 1 dégât autour de lui.​;6;;+2 Réserve
-Souffle;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_Souffle.png;Inflige 2 dégâts.​;3;;+1 Réserve
-Synchronisation;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_AIR_Synchro.png;Inflige 4 dégâts.​ Piochez 2 sorts si la cible est sous l’état ÉVENTÉ.​​;7;1;+2 Air
-Sinistro Eau;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_Sinistro_eau.png;Construisez un SINISTRO ayant 2 BL (limité à 1)​. APPARITION : +1 PA à votre Réserve​.;2;;+1 Eau | 3PO
-Concentration;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_Concentration.png;Applique l’état MOUILLÉ.​;2;;+1 Eau
-Sarcophage;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_sarcophage.png;Inflige 2 dégâts​.​;3;;+1 Réserve
-Vol du Temps;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_voldutemps.png;Inflige 3 dégâts​. +1 PA à votre réserve si vous disposez d’un SINISTRO.​;5;;+2 Eau
-Sablier de Xélor;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_sablier.png;Inflige 3 dégâts. Volez 1 PA de la réserve adverse si la cible est sous l’état MOUILLÉ.​;4;;+1 Eau
-Gelure;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_gelure.png;Inflige 1 dégât​. REMBOBINAGE.​​;3;;+1 Eau
-Accumulation;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_accumulation.png;Inflige 2 dégâts et applique l’état MOUILLÉ​;4;;+1 Eau
-Ralentissement;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_ralentissement2.png;Inflige 1 dégât​. +1 PA à votre réserve si vous disposez d’un SINISTRO​.;3;;+1 Eau
-Coucou;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_coucou.png;Inflige 4 dégâts​.​;5;1;+1 Eau
-Horloge;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_EAU_Horloge.png;Inflige 7 dégâts​. Volez 2 PA de la réserve adverse si la cible est sous l’état MOUILLÉ.​​​;9;1;+2 Eau
-Sinistro Terre;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_Sinistro.png;Construisez un SINISTRO ayant 2 BL. (limité à 1)​ APPARITION : Confère BOUCLIER à votre héros.;2;;+1 Terre | 3PO
-Ajustement Élémentaire;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_Ajustementelementaire.png;Inflige 4 dégâts​.;5;1;+1 Terre
-Petite Frappe Enlisante;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_petitefrappeenlisante.png;Inflige 1 dégât et applique l’état BOUEUX.​;3;;+1 Terre
-Frappe Enlisante;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_Frappeenlisante.png;Inflige 3 dégâts et applique l’état BOUEUX.;5;;+2 Terre
-Cadran de Xélor;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Xelor_terre_cadran.png;Transforme un SINISTRO en CADRAN DE XELOR ayant 5 BL (limité à 1).​ Le CADRAN reçoit les dégâts à la place de votre héros.​;5;;+2 Terre
-Blindage Temporel;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_blindagetemporel2.png;Confère 1 AR à un personnage ou 1 BL à un mécanisme allié.​;3;;+1 Terre
-Démonter;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_DEMONTER.png;Inflige 2 dégâts.​;2;;+1 Réserve
-Science de Mécanismes;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_sciencesdesmecanismes.png;Déplacez un mécanisme de 3 cases et ​lui confère 2 BL​.;4;;+2 Terre
-Rayon Élémentaire;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_rayon-elementaire.png;Inflige 2 dégâts​. +1 niveau à vos jauges élémentaires si la cible est sous l’état BOUEUX.​;5;;+2 Terre
-Rayon Obscur;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/sorts_TERRE_rayonobscur.png;Inflige 5 dégâts​. Applique « PETRIFICATION » si la cible est sous l’état BOUEUX.​;8;1;+2 Terre
-Sinistro Feu;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_feu_sinistro.png;Construisez un SINISTRO ayant 2 BL. (limité à 1)​ APPARITION : Déclenche EXPLOSION autour de lui.;2;;+1 Feu | 3PO
-Brûlure Huilée;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_brulurehuilee2.png;Inflige 2 dégâts et applique l’état HUILÉ.;4;;+1 Feu
-Brûlure Ardente;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_brulureardente.png;Inflige 3 dégâts.​;4;;+1 Réserve
-Brûlure Temporelle;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_bruluretemporelle2.png;Inflige 5 dégâts​. Vos mécanismes appliquent EXPLOSION.​;6;;+1 Feu + 1 Réserve
-Aiguille;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_feu_aiguille.png;Inflige 3 dégâts sur 3 cases devant votre héros.​ Réduit le coût de votre prochain sort FEU de 2 PA si une cible est sous l’état HUILÉ.​;6;;+2 Feu | Ligne
-Xelorium;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_feu_Xelorium.png;Inflige 4 dégâts et applique l’état HUILÉ.;6;;+2 Feu
-Flamme Huilée;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Xelor_flammehuilee.png;Inflige 1 dégât.​ Vos mécanismes appliquent EXPLOSION.​;2;;+1 Feu
-Petite Aiguille;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_feu_petiteaiguille.png;Inflige 1 dégât sur 3 cases devant votre héros​. Réduit le coût de votre prochain sort FEU de 2 PA si une cible est sous l’état HUILÉ.​;3;;+1 Feu | Ligne
-Hydruille;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Heros_Xelor_Hydruille.png;Transforme un SINISTRO en HYDRUILLE ayant 4 BL​. Début de tour : Inflige 2 dégâts sur ses lignes.;5;;+2 Feu
-Poussière Temporelle;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_poussieretemporelle.png;Inflige 5 dégâts autour de votre Héros.​;8;1;+2 Feu
-Réparation;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_Multi_reparation.png;Détruisez un SINISTRO allié pour soigner votre héros de 2 PV.​;5;;+1 Air +1 Feu
-Éternité;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_Multi_eternite.png;Téléporte un personnage à côté d’un mécanisme allié.​ Si vous avez ce sort dans votre deck, votre héros gagne 2 PV au début du combat.​;3;;+1 Feu +1 Air
-Destructuration;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_Multi_destructuration.png;Détruisez un mécanisme allié pour infliger 3 dégâts autour de lui.​ Vos SINISTROS déclenchent EXPLOSION.;5;;+1 Eau +1 Terre
-Chronophagie;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_Multi_chronophagie.png;Vous piochez 2 sorts​. Si vous avez ce sort dans votre deck, votre héros gagne 2 PV au début du combat.​;4;;+2 Eau +1 Air
-Même Pas Mort;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Xelor_Multi_memepasmort.png;Vos compagnons reviennent à la vie.​ Si vous avez ce sort dans votre Deck, votre héros gagne 2 PV au début du combat.​;4;;+1 Air +1 Terre
-Momificatus;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Xelor_Multi_momification.png;Votre héros se transforme en MOMICATUS jusqu’au début de son prochain tour.​ Détail de MOMIFICATUS ​: Votre héros gagne 1 AT​. +2 PA dans sa réserve à chaque fois que vous lancez un sort.​;4;;+1 Feu +1 Terre
-Sabliers Vengeurs;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_sabliers_vengeurs.png;Votre héros gagne 3 « SABLIERS VENGEURS » qui gravitent autour de lui. Chaque fois que votre héros est attaqué, un sablier  inflige 1 dégât à son adversaire et vous gagnez 1 niveau dans votre réserve de PA.​;7;;+1 Feu +1 Terre +1 Eau
-Chibi Cadran;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_chibi_cadrans.png;Le personnage ciblé gagne 3 sabliers qui gravitent autour de lui.​ Chaque fois qu’il subit une attaque physique, un sablier absorbe 1 dégât avant de disparaître.​​;6;;+1 Feu +1 Air +1 Eau
-Sarcophagus;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/sarcophagus.png;Votre héros gagne l’armure temporelle qui disparaîtra au début de son prochain tour.​ L’armure augmente les dégâts de votre héros de 1 et renvoie 1 dégâts à chaque attaque reçue.​;6;;+1 Feu +1 Air +1 Terre
+Uppercut;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_Uppercut.png;Repousse d’une case. ​;3;0;+1 Air
+Intimidation;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_Intimidation.png;Inflige 2 dégâts aux personnages adjacents à votre héros et les repousse d’une case.;3;0;+1 Air
+Crochet;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_Crochet.png;Inflige 2 dégâts et applique l’état ÉVENTÉ​.;2;0;+1 Air
+Rafale;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_Rafale.png;Inflige 2 dégâts.​ Le prochain sort que vous lancez ce tour coûte 1 PA de moins.​;4;1;+1 Air
+Fendre l'Air;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_FendreAir.png;Inflige 3 dégâts OU 4 dégâts si la cible est sous l’état ÉVENTÉ.;4;0;+1 Air
+Tonnerre en Série;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_TonnerreEnSerie.png;Inflige 2 dégâts​ REBOND.​;4;0;+1 Air
+Foudroyer;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_ChargeTonnerre.png;Inflige 2 dégâts et applique l’état ÉVENTÉ.;5;1;+1 Air
+Jabs;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_Jabs.png;Inflige 0 dégât OU 1 dégât si la cible est sous l’état ÉVENTÉ.;1;1;
+Brise;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_Brise.png;Inflige 1 dégât.​ Le prochain sort que vous lancez ce tour coûte 1 PA de moins.​;3;0;+1 Air
+Charge Tonnerre;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Air_ChargeTonnerreEnSerie.png;Votre héros charge de 2 cases en ligne et inflige 7 dégâts. REBOND.​;8;0;+2 Air
+Siber;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_Siber.png;Inflige 1 dégât et applique l’état MOUILLÉ.;3;0;+1 Eau
+Dag;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_Dag.png;Inflige 2 dégâts.​;3;1;
+Poing de Glace;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_PoingDeGlace.png;Inflige 1 dégât​. SOUTIEN : Ce sort coute 1 PA de moins par allié adjacent à votre héros.​;2;0;+1 Eau
+Nouvelle Vague;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_NouvelleVague.png;Inflige 4 dégâts​. SOUTIEN : Piochez une carte par allié adjacent à votre héros.​​;6;0;+2 Eau
+Tsunami;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_Tsunami.png;Inflige 3 dégâts​.​;4;1;+1 Eau
+Morsure Glaciale;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_MorsureGlaciale.png;Inflige 2 dégâts et applique l’état MOUILLÉ.;4;0;+1 Eau
+Onde de Choc;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_OndeDeChoc.png;Inflige 3 dégâts.​ SOUTIEN : +1 niveau à votre réserve de PA par allié adjacent​​.;5;0;+2 Eau
+Pic Glacial;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_PicGlacial.png;Inflige 1 dégât OU 2 dégâts si la cible est sous l’état MOUILLÉ.;2;0;+1 Eau
+Lance de Glace;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_LanceDeGlace.png;Inflige 3 dégâts. SOUTIEN : Ce sort coute 1 PA de moins par allié adjacent à votre héros.;4;0;+1 Eau
+Blizzard;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Eau_Blizzard.png;Inflige 7 dégâts​. Applique GELÉ si la cible est sous l’état MOUILLÉ.​​;8;1;+2 Eau
+Ébranler;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_Ebranler.png;Inflige 2 dégâts et applique l’état BOUEUX.;3;0;+1 Terre
+Frappe du Dragon;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_FrappeDuDragon.png;Inflige 4 dégâts et applique l’état BOUEUX.​;5;0;+2 Terre
+Frappe Immobilisante;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_frappe-immobilisante.png;Inflige 3 dégâts. Applique « IMMOBILISÉ » si la cible est sous l’état BOUEUX.;5;0;+1 Terre
+Butoir;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_Butoir.png;Inflige 4 dégâts.​​;5;0;+2 Terre
+Bond Étourdissant;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_Bond_Etourdissant.png;Téléporte votre Héros de 2 cases. Il inflige ensuite 2 dégâts autour de lui​.​;4;1;+1 Terre
+Fracasser;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_Fracasser.png;Inflige 3 dégât OU 4 dégâts si la cible est sous l’état BOUEUX.;4;1;+1 Terre
+Heurt de Gloire;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_HeurtdeGloire.png;Inflige 2 dégâts. Coup de Grâce : Votre héros gagne 5 AR.;3;0;+1 Terre
+Choquer;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_Choquer.png;Inflige 5 dégâts. Coup de Grâce : Tous vos adversaires gagnent l’état BOUEUX.;6;0;+2 Terre
+Charge Courte;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_ChargeCourte.png;Votre héros charge de 2 cases en ligne et inflige 4 dégâts.;4;0;+1 Terre
+Charge Longue;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Terre_ChargeLongue.png;Inflige 7 dégâts​. Votre héros charge de 4 cases en ligne et inflige 6 dégâts. Applique ASSOMMÉ si la cible est sous l’état BOUEUX.​​;7;1;+2 Terre
+Fulgur;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_Fulgur.png;Inflige 2 dégâts.;3;0;+1 Feu
+Masser;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Masser.png;Inflige 2 dégâts et applique l’état HUILÉ.;4;0;+1 Feu
+Brûler;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_Bruler.png;Inflige 3 dégâts OU 4 dégâts si la cible est sous l’état HUILÉ.;4;0;+1 Feu
+Corriger;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_Corriger.png;Inflige 2 dégâts en zone d’effet « croix ».​​;4;1;+1 Feu
+Fondre la Vie;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_FondreLaVie.png;Inflige 3 dégâts. Votre héros se soigne de 1 si la cible est sous l’état HUILÉ.;5;0;+2 Feu
+Inspiration;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_Inspiration.png;Inflige 2 dégâts OU inflige 4 dégâts si la cible est sous l’état HUILÉ.;5;1;+1 Feu
+Brutalité;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_Brutalite.png;Inflige 4 dégâts. Applique « EXPLOSION 1 » autour de la cible si elle est sous l’état HUILÉ.;5;0;+2 Feu
+Blâmer;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_Blamer.png;Inflige 4 dégâts et applique l’état HUILÉ OU Inflige 5 dégâts si la cible est sous l’état HUILÉ.;6;0;+2 Feu
+Fondre le Sol;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_FondreLeSol.png;Inflige 8 dégâts sur 3 cases devant votre héros. +1 niveau de Jauge FEU par adversaire touché.;9;0;+1 Feu
+Fondre l'Âme;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Feu_FondreLAme.png;Inflige 6 dégâts OU 7 dégâts autour de votre héros aux cibles sous l’état HUILÉ.​​;7;1;+2 Feu
+Bond;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_Bond.png;Téléporte un personnage allié de 3 cases.​  Si vous avez ce sort dans votre deck, votre héros gagne 1 PDV au début du combat. ​;5;0;+1 Air +1 Terre
+Sol Motivant;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_SolMotivant.png;Transforme une case libre adjacente à votre héros en SOL MOTIVANT.​ Si vous avez ce sort dans votre deck, votre héros gagne 2 PDV au début du combat. ​;4;0;+1 Feu +1 Eau
+Sol Accélérateur;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_SolAccelerateur.png;Transforme une case libre adjacente à votre héros en SOL ACCÉLÉRATEUR. Si vous avez ce sort dans votre deck, votre héros gagne 2 PDV  au début du combat.​;4;0;+1 Eau +1 Terre
+Algarade;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_Algarade.png;Inflige 3 dégâts.​ Si votre adversaire a une réserve de PA plus remplie que la votre, vous piochez 1 sort.​;4;0;+1 Eau +1 Air
+Acharnement;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_Acharnement.png;Les dégâts physiques de votre héros et compagnons sont augmentés de 2 jusqu’à la fin du tour.​;9;0;+1 Air +1 Feu
+Bouclier;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_Bouclier.png;Applique BOUCLIER sur votre héros. Si vous avez ce sort dans votre deck, votre héros gagne 2 AR au début du combat.​;4;0;+1 Feu +1 Terre
+Légendarus;https://i2.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_Legendarus.png;Si votre réserve de PA dispose de 10 niveaux, la vide et invoque LÉGENDARUS (Celui qui n’a jamais mal).​;0;0;+1 Feu +1 Terre +1 Eau
+Épées de Riposte;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_EpeesDeRiposte.png;Le personnage ciblé gagne 3 ÉPÉES  DE RIPOSTE qui gravitent autour de lui. Chaque fois qu’il subit une attaque physique, une épée inflige X dégâts avant de disparaître.​;7;0;+1 Feu +1 Air +1 Eau
+Épées Sanglantes;https://i1.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_EpeesSanglantes.png;Le personnage ciblé gagne 3 ÉPÉES SANGLANTES  qui gravitent autour de lui. Chaque fois qu’il attaque, une épée inflige X dégâts et le soigne de X PV avant de disparaître.;7;0;+1 Terre +1 Air +1 Eau
+Poings Volants;https://i0.wp.com/waven-game.com/wp-content/uploads/2019/01/Spell_Iop_Multi_PoingsVolants.png;Le personnage ciblé gagne 4 POINGS VOLANTS qui gravitent autour de lui. Chaque fois qu’il arrive sur une case adjacente à un adversaire, un poing inflige X dégâts avant de disparaître.;7;0;+1 Feu +1 Air +1 Terre
 

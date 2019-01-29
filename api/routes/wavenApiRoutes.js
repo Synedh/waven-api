@@ -16,6 +16,12 @@ module.exports = function(app) {
         wavenWeapon = require('../controllers/wavenWeaponController.js'),
         wavenRace = require('../controllers/wavenRaceController.js');
 
+    // documentation Route
+    app.route('/doc')
+        .get(function(req, res) {
+            res.render('doc/index.html')
+        })
+
     // systemApi Routes
     app.route('/roles')
         .get(role.list_all_roles)

@@ -69,12 +69,12 @@ def get_weapons(html):
 
 
 def get_spells(html):
-    regex = r"<li class=\"sort\">[\s\S]*?<img.*?src=\"(.*?)\?[\s\S]*?<h6>(.+)</h6>[\s\S]*?<h7>([0-9]+)PA \| (.*?)(\s\+([0-9]+) Réserve)?</h7>(.*?)</[\s\S]*?<\/li>"
+    regex = r"<li class=\"sort\">[\s\S]*?<img.*?src=\"(.*?)\?[\s\S]*?<h6>(.+)<\/h6>[\s\S]*?<h7>(?:\s?([0-9]+)PA\s\|\s?)?((?:\s?\+\s?[0-9] (?:Air|Terre|Eau|Feu))*)(?:\s?\|?\s?\+\s?([0-9]+) Réserve)?(?:.*)?<\/h7>(.*?)<\/[\s\S]*?<\/li>"
     matches = re.finditer(regex, html, re.MULTILINE)
-    csv_string = "name;iconUrl;description;cost;stockpile&resources\n"
+    csv_string = "name;iconUrl;description;cost;stockpile;resources\n"
     csv_string = ""
     for match in matches:
-        csv_string += "%s;%s;%s;%s;%s;%s\n" % (match.group(2), match.group(1), match.group(7).replace('<br />', ' '), match.group(3), match.group(6) if match.group(6) else '', match.group(4))
+        csv_string += "%s;%s;%s;%s;%s;%s\n" % (match.group(2), match.group(1), match.group(6).replace('<br />', ' '), match.group(3) if match.group(3) else 0, match.group(5) if match.group(5) else 0, match.group(4) if match.group(4) else '')
     print(csv_string)
 
 
@@ -83,31 +83,46 @@ def get_page(url):
     get_spells(html)
 
 
-def post_every_spells():
-    with open('spells.csv') as file:
+def post_every_spells(filename, class_id=None):
+    posted_spells = []
+    with open(filename) as file:
         for line in file:
-            line = line.split(';')
-            resources_str = re.finditer(r'\+([0-9]+)\s([a-zA-Z]+)', line[-1])
-            resources = []
-            for resource_str in resources_str:
-                resource = {"element": elements[resource_str.group(2)], "quantity": int(resource_str.group(1))}
-                resources.append(post('resources', resource)['id'])
-            spell = {
-                "name": line[0],
-                "iconUrl": line[1],
-                "description": line[2].replace('\u200b', ''),
-                "cost": line[3],
-                "stockpile": line[4] if line[4] != '' else 0,
-                "resources": resources,
-            }
-        posted_spell = post('spells', spell)
-        spells = get('classes', '5bd816496baf1b6a02e8fec1')['spells']
-        spells.append(posted_spell['id'])
-        put('classes', {'spells': spells})
+            line = line.replace('&rsquo;', '\'').split(';')
+            if len(line) > 2:
+                resources_str = re.finditer(r'\+([0-9]+)\s([a-zA-Z]+)', line[-1])
+                resources = []
+                for resource_str in resources_str:
+                    resource = {"element": elements[resource_str.group(2)], "quantity": int(resource_str.group(1))}
+                    resources.append(post('resources', resource)['id'])
+                spell = {
+                    "name": line[0],
+                    "iconUrl": line[1],
+                    "description": line[2].replace('\u200b', ''),
+                    "cost": line[3],
+                    "stockpile": line[4],
+                    "resources": resources,
+                }
+                posted_spell = post('spells', spell)
+                print('Successfully added spell ' + posted_spell['name'] + " with id " + posted_spell['id'])
+                posted_spells.append(posted_spell['id'])
+    if class_id:
+        spells = get('classes', class_id)['spells']
+        spells += posted_spells
+        put('classes', class_id, {'spells': spells})
+
+
+def delete_all_spells(class_id=None):
+    if class_id:
+        for spell in get('classes', class_id)['spells']:
+            print(delete('spells', spell)['message'])
+    else:
+        for spell in get('spells'):
+            print(delete('spells', spell['id'])['message'])
 
 
 
 if __name__ == '__main__':
     # get_page(sys.argv[1])
-    post_every_spells()
+    # delete_all_spells()
+    post_every_spells('spells.csv', '5bd8169e6baf1b6a02e8fec2')
 

@@ -59,10 +59,10 @@ exports.create_a_buff = function(req, res) {
 exports.read_a_buff = function(req, res) {
   Buff.findById(req.params.buffId, function(err, buff) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (buff)
-      res.json(buff);
-    res.status(404)
+      return res.json(buff);
+    return res.status(404)
       .json({error: 'Cannot find buff with id ' + req.params.buffId + '.'})
   });
 };
@@ -71,10 +71,10 @@ exports.read_a_buff = function(req, res) {
 exports.update_a_buff = function(req, res) {
   Buff.findByIdAndUpdate({_id: req.params.buffId}, req.body, {new: true}, function(err, buff) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (buff)
-      res.json(buff);
-    res.status(404)
+      return res.json(buff);
+    return res.status(404)
       .json({error: 'Cannot find buff with id ' + req.params.buffId + '.'})
   });
 };

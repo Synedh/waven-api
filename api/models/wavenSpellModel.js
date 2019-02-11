@@ -1,12 +1,11 @@
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    Resource = mongoose.model('Resource');
 
 var spellSchema = new Schema({
     name: {
-        type: String,
-        unique: true,
-        required: 'Enter the name of the spell'
+        type: String
     },
     iconUrl: {
         type: String
@@ -27,22 +26,9 @@ var spellSchema = new Schema({
         default: 0
     },
     resources: {
-        type: [Schema.Types.ObjectId],
-        ref: 'Resource',
+        type: [Resource.schema],
         default: []
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-spellSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/spells/' + this.id;
 });
 
 module.export = mongoose.model('Spell', spellSchema);

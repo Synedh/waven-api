@@ -60,10 +60,10 @@ exports.create_a_transfer = function(req, res) {
 exports.read_a_transfer = function(req, res) {
   Transfer.findById(req.params.transferId, function(err, transfer) {
     if (err)
-      res.send(err);
+      return nes.send(err);
     if (transfer)
-      res.json(transfer);
-    res.status(404)
+      return res.json(transfer);
+    return res.status(404)
       .json({error: 'Cannot find transfer with id ' + req.params.transferId + '.'})
   });
 };
@@ -72,10 +72,10 @@ exports.read_a_transfer = function(req, res) {
 exports.update_a_transfer = function(req, res) {
   Transfer.findByIdAndUpdate({_id: req.params.transferId}, req.body, {new: true}, function(err, transfer) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (transfer)
-      res.json(transfer);
-    res.status(404)
+      return res.json(transfer);
+    return res.status(404)
       .json({error: 'Cannot find transfer with id ' + req.params.transferId + '.'})
   });
 };

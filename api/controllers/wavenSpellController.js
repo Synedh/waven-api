@@ -27,8 +27,10 @@ exports.list_all_spells = function(req, res) {
 exports.create_a_spell = function(req, res) {
   var new_spell = new Spell(req.body);
   new_spell.save(function(err, spell) {
-    if (err)
+    if (err) {
+      res.status(400)
       res.send(err);
+    }
     res.json(spell);
   });
 };
@@ -68,10 +70,10 @@ exports.create_a_spell = function(req, res) {
 exports.read_a_spell = function(req, res) {
   Spell.findById(req.params.spellId, function(err, spell) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (spell)
-      res.json(spell);
-    res.status(404)
+      return res.json(spell);
+    return res.status(404)
       .json({error: 'Cannot find spell with id ' + req.params.spellId + '.'})
   });
 };
@@ -80,10 +82,10 @@ exports.read_a_spell = function(req, res) {
 exports.update_a_spell = function(req, res) {
   Spell.findByIdAndUpdate({_id: req.params.spellId}, req.body, {new: true}, function(err, spell) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (spell)
-      res.json(spell);
-    res.status(404)
+      return res.json(spell);
+    return res.status(404)
       .json({error: 'Cannot find spell with id ' + req.params.spellId + '.'})
   });
 };

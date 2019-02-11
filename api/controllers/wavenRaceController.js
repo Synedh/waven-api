@@ -70,10 +70,10 @@ exports.create_a_race = function(req, res) {
 exports.read_a_race = function(req, res) {
   Race.findById(req.params.classId, function(err, race) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (race)
-      res.json(race);
-    res.status(404)
+      return res.json(race);
+    return res.status(404)
       .json({error: 'Cannot find race with id ' + req.params.raceId + '.'})
   });
 };
@@ -82,10 +82,10 @@ exports.read_a_race = function(req, res) {
 exports.update_a_race = function(req, res) {
   Race.findByIdAndUpdate({_id: req.params.classId}, req.body, {new: true}, function(err, race) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (race)
-      res.json(race);
-    res.status(404)
+      return res.json(race);
+    return res.status(404)
       .json({error: 'Cannot find race with id ' + req.params.raceId + '.'})
   });
 };

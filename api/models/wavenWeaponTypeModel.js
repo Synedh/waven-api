@@ -1,12 +1,11 @@
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    Passive = mongoose.model('Passive');
 
 var weaponTypeSchema = new Schema({
     name: {
-        type: String,
-        unique: true,
-        required: 'Enter the name of the weapon type'
+        type: String
     },
     iconUrl: {
         type: String
@@ -18,8 +17,8 @@ var weaponTypeSchema = new Schema({
         type: String
     },
     passives: {
-        type: [Schema.Types.ObjectId],
-        rel: 'Passive'
+        type: [Passive.schema],
+        default: []
     },
     spells: {
         type: [Schema.Types.ObjectId],
@@ -34,18 +33,6 @@ var weaponTypeSchema = new Schema({
     movement: {
         type: Number,
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-weaponTypeSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/weaponTypes/' + this.id;
 });
 
 module.export = mongoose.model('WeaponType', weaponTypeSchema);

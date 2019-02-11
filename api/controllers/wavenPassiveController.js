@@ -60,10 +60,10 @@ exports.create_a_passive = function(req, res) {
 exports.read_a_passive = function(req, res) {
   Passive.findById(req.params.passiveId, function(err, passive) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (passive)
-      res.json(passive);
-    res.status(404)
+      return res.json(passive);
+    return res.status(404)
       .json({error: 'Cannot find passive with id ' + req.params.passiveId + '.'})
   });
 };
@@ -72,10 +72,10 @@ exports.read_a_passive = function(req, res) {
 exports.update_a_passive = function(req, res) {
   Passive.findByIdAndUpdate({_id: req.params.passiveId}, req.body, {new: true}, function(err, passive) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (passive)
-      res.json(passive);
-    res.status(404)
+      return res.json(passive);
+    return res.status(404)
       .json({error: 'Cannot find passive with id ' + req.params.passiveId + '.'})
   });
 };

@@ -68,10 +68,10 @@ exports.create_a_news = function(req, res) {
 exports.read_a_news = function(req, res) {
   News.findById(req.params.newsId, function(err, news) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (news)
-      res.json(news);
-    res.status(404)
+      return res.json(news);
+    return res.status(404)
       .json({error: 'Cannot find news with id ' + req.params.newsId + '.'})
   });
 };
@@ -80,10 +80,10 @@ exports.read_a_news = function(req, res) {
 exports.update_a_news = function(req, res) {
   News.findByIdAndUpdate({_id: req.params.newsId}, req.body, {new: true}, function(err, news) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (news)
-      res.json(news);
-    res.status(404)
+      return res.json(news);
+    return res.status(404)
       .json({error: 'Cannot find news with id ' + req.params.newsId + '.'})
   });
 };

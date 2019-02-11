@@ -20,18 +20,6 @@ var roleSchema = new Schema({
     rule_delete: {
         type: [String]
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-roleSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/roles/' + this.id;
 });
 
 roleSchema.methods.checkRole = function(method, endpoint, next) {

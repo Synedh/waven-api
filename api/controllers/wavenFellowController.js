@@ -75,10 +75,10 @@ exports.create_a_fellow = function(req, res) {
 exports.read_a_fellow = function(req, res) {
   Fellow.findById(req.params.fellowId, function(err, fellow) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (fellow)
-      res.json(fellow);
-    res.status(404)
+      return res.json(fellow);
+    return res.status(404)
       .json({error: 'Cannot find fellow with id ' + req.params.fellowId + '.'})
   });
 };
@@ -87,10 +87,10 @@ exports.read_a_fellow = function(req, res) {
 exports.update_a_fellow = function(req, res) {
   Fellow.findByIdAndUpdate({_id: req.params.fellowId}, req.body, {new: true}, function(err, fellow) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (fellow)
-      res.json(fellow);
-    res.status(404)
+      return res.json(fellow);
+    return res.status(404)
       .json({error: 'Cannot find fellow with id ' + req.params.fellowId + '.'})
   });
 };

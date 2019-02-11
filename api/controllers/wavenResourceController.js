@@ -58,10 +58,10 @@ exports.create_an_resource = function(req, res) {
 exports.read_an_resource = function(req, res) {
   Resource.findById(req.params.resourceId, function(err, resource) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (resource)
-      res.json(resource);
-    res.status(404)
+      return res.json(resource);
+    return res.status(404)
       .json({error: 'Cannot find resource with id ' + req.params.resourceId + '.'})
   });
 };
@@ -70,10 +70,10 @@ exports.read_an_resource = function(req, res) {
 exports.update_an_resource = function(req, res) {
   Resource.findByIdAndUpdate({_id: req.params.resourceId}, req.body, {new: true}, function(err, resource) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (resource)
-      res.json(resource);
-    res.status(404)
+      return res.json(resource);
+    return res.status(404)
       .json({error: 'Cannot find resource with id ' + req.params.resourceId + '.'})
   });
 };

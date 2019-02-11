@@ -4,42 +4,26 @@ var Schema = mongoose.Schema;
 
 var newsSchema = new Schema({
     name: {
-        type: String,
-        unique: true,
-        required: 'Enter the name of the news'
+        type: String
     },
     imageUrl: {
-        type: String,
-        required: true
+        type: String
     },
     content: {
-        type: String,
-        required: true
+        type: String
     },
     author: {
-        type: String,
+        type: String
     },
     date: {
-        type: Date,
+        type: Date
     },
     tags: {
-        type: [String],
+        type: [String]
     },
     categorie: {
         type: String
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-newsSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/news/' + this.id;
 });
 
 module.export = mongoose.model('News', newsSchema);

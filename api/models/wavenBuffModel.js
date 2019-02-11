@@ -14,18 +14,6 @@ var buffSchema = new Schema({
     description: {
         type: String
     },
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-buffSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/buffs/' + this.id;
 });
 
 module.export = mongoose.model('Buff', buffSchema);

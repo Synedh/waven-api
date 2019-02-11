@@ -4,9 +4,7 @@ var Schema = mongoose.Schema;
 
 var raceSchema = new Schema({
     name: {
-        type: String,
-        unique: true,
-        required: 'Enter the name of the race'
+        type: String
     },
     portraitUrl: {
         type: String,
@@ -19,7 +17,6 @@ var raceSchema = new Schema({
     },
     description: {
         type: String,
-        required: 'Need a short description of the class'
     },
     weaponTypes: {
         type: [Schema.Types.ObjectId],
@@ -29,18 +26,6 @@ var raceSchema = new Schema({
         type:  [Schema.Types.ObjectId],
         ref: 'Spell'
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-raceSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/classes/' + this.id;
 });
 
 module.export = mongoose.model('Race', raceSchema);

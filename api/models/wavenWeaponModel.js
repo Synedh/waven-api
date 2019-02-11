@@ -4,9 +4,7 @@ var Schema = mongoose.Schema;
 
 var weaponSchema = new Schema({
     name: {
-        type: String,
-        unique: true,
-        required: 'Enter the name of the weapon'
+        type: String
     },
     iconUrl: {
         type: String
@@ -21,18 +19,6 @@ var weaponSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'WeaponType'
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-weaponSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/weapons/' + this.id;
 });
 
 module.export = mongoose.model('Weapon', weaponSchema);

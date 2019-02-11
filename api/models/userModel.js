@@ -9,6 +9,11 @@ var userSchema = new Schema({
         unique: true,
         required: true
     },
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
     password: {
         type: String,
         required: true
@@ -18,18 +23,6 @@ var userSchema = new Schema({
         ref: 'Role',
         required: true
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-userSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/users/' + this.id;
 });
 
 userSchema.pre('save', function (next) {
@@ -40,12 +33,12 @@ userSchema.pre('save', function (next) {
                 return next(err);
             }
             user.password = hash;
-            console.log(user);
-            next();
         });
-    } else {
-        return next();
     }
+    if (user.isModified('email') || user.isNew) {
+
+    }
+    return next();
 });
  
 userSchema.methods.comparePassword = function (password, next) {

@@ -10,19 +10,10 @@ var elementSchema = new Schema({
     },
     iconUrl: {
         type: String
+    },
+    imageUrl: {
+        type: String
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-elementSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/elements/' + this.id;
 });
 
 module.export = mongoose.model('Element', elementSchema);

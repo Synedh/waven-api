@@ -17,10 +17,10 @@ module.exports = function(app) {
         wavenRace = require('../controllers/wavenRaceController.js');
 
     // documentation Route
-    app.route('/doc')
+   /* app.route('/doc')
         .get(function(req, res) {
             res.render('doc/index.html')
-        })
+        })*/
 
     // systemApi Routes
     app.route('/roles')
@@ -62,14 +62,14 @@ module.exports = function(app) {
         .put(wavenElement.update_an_element)
         .delete(wavenElement.delete_an_element);
 
-    app.route('/resources')
-        .get(wavenResource.list_all_resources)
-        .post(wavenResource.create_an_resource);
+    // app.route('/resources')
+    //     .get(wavenResource.list_all_resources)
+    //     .post(wavenResource.create_an_resource);
 
-    app.route('/resourcess/:resourcesId')
-        .get(wavenResource.read_an_resource)
-        .put(wavenResource.update_an_resource)
-        .delete(wavenResource.delete_an_resource);
+    // app.route('/resources/:resourceId')
+    //     .get(wavenResource.read_an_resource)
+    //     .put(wavenResource.update_an_resource)
+    //     .delete(wavenResource.delete_an_resource);
 
 
     app.route('/buffs')

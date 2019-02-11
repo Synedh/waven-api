@@ -4,9 +4,7 @@ var Schema = mongoose.Schema;
 
 var passiveSchema = new Schema({
     name: {
-        type: String,
-        unique: true,
-        required: 'Enter the name of the passive'
+        type: String
     },
     iconUrl: {
         type: String
@@ -14,18 +12,6 @@ var passiveSchema = new Schema({
     description: {
         type: String
     },
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-passiveSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/passives/' + this.id;
 });
 
 module.export = mongoose.model('Passive', passiveSchema);

@@ -72,10 +72,10 @@ exports.create_a_weaponType = function(req, res) {
 exports.read_a_weaponType = function(req, res) {
   WeaponType.findById(req.params.weaponTypeId, function(err, weaponType) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (weaponType)
-      res.json(weaponType);
-    res.status(404)
+      return res.json(weaponType);
+    return res.status(404)
       .json({error: 'Cannot find weaponType with id ' + req.params.weaponTypeId + '.'})
   });
 };
@@ -84,10 +84,10 @@ exports.read_a_weaponType = function(req, res) {
 exports.update_a_weaponType = function(req, res) {
   WeaponType.findByIdAndUpdate({_id: req.params.weaponTypeId}, req.body, {new: true}, function(err, weaponType) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (weaponType)
-      res.json(weaponType);
-    res.status(404)
+      return res.json(weaponType);
+    return res.status(404)
       .json({error: 'Cannot find weaponType with id ' + req.params.weaponTypeId + '.'})
   });
 };

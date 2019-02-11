@@ -58,10 +58,10 @@ exports.create_an_element = function(req, res) {
 exports.read_an_element = function(req, res) {
   Element.findById(req.params.elementId, function(err, element) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (element)
-      res.json(element);
-    res.status(404)
+      return res.json(element);
+    return res.status(404)
       .json({error: 'Cannot find element with id ' + req.params.elementId + '.'})
   });
 };
@@ -70,10 +70,10 @@ exports.read_an_element = function(req, res) {
 exports.update_an_element = function(req, res) {
   Element.findByIdAndUpdate({_id: req.params.elementId}, req.body, {new: true}, function(err, element) {
     if (err)
-      res.send(err);
+      return res.send(err);
     if (element)
-      res.json(element);
-    res.status(404)
+      return res.json(element);
+    return res.status(404)
       .json({error: 'Cannot find element with id ' + req.params.elementId + '.'})
   });
 };

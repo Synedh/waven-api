@@ -12,18 +12,6 @@ var resourceSchema = new Schema({
         type: Number,
         required: true
     }
-},
-{
-    toJSON: { 
-        virtuals: true
-    },
-    toObject: {
-        virtuals: true
-    },
-});
-
-resourceSchema.virtual('href').get(function () {
-    return 'http://waven-api.synedh.fr/resources/' + this.id;
 });
 
 module.export = mongoose.model('Resource', resourceSchema);

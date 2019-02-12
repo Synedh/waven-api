@@ -11,3 +11,4 @@
 /home/synedh/waven-api/tools/log/20190208-0000-01-access.log
 /home/synedh/waven-api/tools/log/20190209-0000-01-access.log
 /home/synedh/waven-api/tools/log/20190210-0000-01-access.log
+/home/synedh/waven-api/tools/log/20190211-0000-01-access.log

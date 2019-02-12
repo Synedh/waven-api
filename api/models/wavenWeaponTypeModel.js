@@ -1,7 +1,8 @@
 'use strict';
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    Passive = mongoose.model('Passive');
+    Schema  = mongoose.Schema,
+    Passive = mongoose.model('Passive'),
+    Spell   = mongoose.model('Spell');
 
 var weaponTypeSchema = new Schema({
     name: {
@@ -21,17 +22,20 @@ var weaponTypeSchema = new Schema({
         default: []
     },
     spells: {
-        type: [Schema.Types.ObjectId],
-        rel:' Spell'
+        type: [Spell.schema],
+        default: []
     },
     life: {
         type: Number,
+        default: 0
     },
     damage: {
         type: Number,
+        default: 0
     },
     movement: {
         type: Number,
+        default: 0
     }
 });
 

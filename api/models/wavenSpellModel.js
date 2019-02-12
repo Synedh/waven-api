@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var spellSchema = new Schema({
     name: {
-        type: String
+        type: String,
     },
     iconUrl: {
         type: String
@@ -20,6 +20,9 @@ var spellSchema = new Schema({
     cost: {
         type: Number,
         required: true
+    },
+    range: {
+        type: Number
     },
     stockpile: {
         type: Number,

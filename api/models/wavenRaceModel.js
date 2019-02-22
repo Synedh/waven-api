@@ -6,26 +6,38 @@ var raceSchema = new Schema({
     name: {
         type: String
     },
+    fullName: {
+        type: String
+    },
     portraitUrl: {
         type: String,
     },
     imageUrl: {
         type: String,
     },
-    tags: {
-        type: [String],
-    },
     description: {
         type: String,
     },
-    weaponTypes: {
+    weapons: {
         type: [Schema.Types.ObjectId],
-        ref: 'WeaponType'
+        ref: 'Weapon'
     },
     spells: {
         type:  [Schema.Types.ObjectId],
         ref: 'Spell'
     }
+});
+
+raceSchema.pre('findOne', function(next) {
+    this.populate({
+        path: 'spells',
+        model: 'Spell'
+    })
+        .populate({
+        path: 'weapons',
+        model: 'Weapon'
+    });
+    next();
 });
 
 module.export = mongoose.model('Race', raceSchema);

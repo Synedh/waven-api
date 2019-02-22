@@ -25,20 +25,56 @@ var userSchema = new Schema({
     }
 });
 
+userSchema.pre('findOne', function(next) {
+    this.populate({
+        path: 'role',
+        model: 'Role'
+    });
+    next();
+});
+
 userSchema.pre('save', function (next) {
     var user = this;
-    if (user.isModified('password') || user.isNew) {
+    bcrypt.hash(user.password, 10, function (err, hash) {
+        if (err) {
+            return next(err);
+        }
+        user.password = hash;
+        next();
+    });
+});
+
+userSchema.pre('save', function (next) {
+    var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!this.email.match(mailFormat)) {
+        return next('Incorrect email format');
+    }
+    next();
+});
+
+userSchema.pre('findOneAndUpdate', function(next) {
+    if (this.getUpdate().password) {
         bcrypt.hash(user.password, 10, function (err, hash) {
             if (err) {
                 return next(err);
             }
-            user.password = hash;
+            this.getUpdate().password = hash;
+            return next();
         });
     }
-    if (user.isModified('email') || user.isNew) {
+    next();
+});
 
+userSchema.pre('findOneAndUpdate', function(next) {
+    var email = this.getUpdate().email;
+    if (email) {
+        var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w+)+$/;
+        if (!email.match(mailFormat)) {
+            return next('Incorrect email format');
+        }
+        return next();
     }
-    return next();
+    next();
 });
  
 userSchema.methods.comparePassword = function (password, next) {

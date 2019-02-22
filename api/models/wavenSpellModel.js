@@ -34,5 +34,13 @@ var spellSchema = new Schema({
     }
 });
 
+spellSchema.pre('findOne', function(next) {
+    this.populate({
+        path: 'element',
+        model: 'Element'
+    });
+    next();
+});
+
 module.export = mongoose.model('Spell', spellSchema);
     

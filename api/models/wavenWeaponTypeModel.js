@@ -1,8 +1,6 @@
 'use strict';
 var mongoose = require('mongoose'),
-    Schema  = mongoose.Schema,
-    Passive = mongoose.model('Passive'),
-    Spell   = mongoose.model('Spell');
+    Schema  = mongoose.Schema;
 
 var weaponTypeSchema = new Schema({
     name: {
@@ -17,13 +15,13 @@ var weaponTypeSchema = new Schema({
     description: {
         type: String
     },
-    passives: {
-        type: [Passive.schema],
-        default: []
-    },
     spells: {
-        type: [Spell.schema],
-        default: []
+        type: [Schema.Types.ObjectId],
+        ref: 'Spell'
+    },
+    passives: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Passive'
     },
     life: {
         type: Number,
@@ -37,6 +35,18 @@ var weaponTypeSchema = new Schema({
         type: Number,
         default: 0
     }
+});
+
+weaponTypeSchema.pre('findOne', function(next) {
+    this.populate({
+        path: 'spells',
+        model: 'Spell'
+    })
+        .populate({
+        path: 'passives',
+        model: 'Passive'
+    });
+    next();
 });
 
 module.export = mongoose.model('WeaponType', weaponTypeSchema);

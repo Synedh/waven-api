@@ -1,6 +1,6 @@
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema   = mongoose.Schema;
 
 var roleSchema = new Schema({
     name: {
@@ -22,8 +22,9 @@ var roleSchema = new Schema({
     }
 });
 
-roleSchema.methods.checkRole = function(method, endpoint, next) {
-    var role_method = 'rule_' + method.toLowerCase();
+roleSchema.methods.checkRole = function(req, next) {
+    var role_method = 'rule_' + req.method.toLowerCase();
+    var endpoint = req.originalUrl.split('/')[1];
     var allow = false;
     for (var i = 0; i < this[role_method].length; i++) {
         if (this[role_method][i] == '*' || this[role_method][i] == endpoint) {

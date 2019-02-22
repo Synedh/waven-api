@@ -1,6 +1,7 @@
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    Resource = mongoose.model('Resource');
 
 var fellowSchema = new Schema({
     name: {
@@ -23,13 +24,13 @@ var fellowSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: 'Passive'
     },
-    transfer: {
-        type: Schema.Types.ObjectId,
+    transfers: {
+        type: [Schema.Types.ObjectId],
         ref: 'Transfer'
     },
     cost: {
-        type: [[Schema.Types.ObjectId, Number]],
-        rel: 'Element'
+        type: [Resource.schema],
+        default: []
     },
     life: {
         type: Number
@@ -42,5 +43,20 @@ var fellowSchema = new Schema({
     }
 });
 
+fellowSchema.pre('findOne', function(next) {
+    this.populate({
+        path: 'spells',
+        model: 'Spell'
+    })
+        .populate({
+        path: 'passives',
+        model: 'Passive'
+    })
+        .populate({
+        path: 'transfer',
+        model: 'Transfer'
+    });
+    next();
+});
+
 module.export = mongoose.model('Fellow', fellowSchema);
-    

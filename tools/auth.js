@@ -35,11 +35,22 @@ exports.basic_auth = function(req, res, next) {
                         if (err) {
                             return next(err);
                         } else {
-                            role.checkRole(req.method, req.originalUrl.split('/')[1], function(err, allow) {
+                            role.checkRole(req, function(err, allow) {
+                                var method = req.method.toLowerCase();
+                                var endpoint = req.originalUrl.split('/')[1];
                                 if (err) {
                                     return res.json(err);
-                                } else if (allow) {
-                                    return next();
+                                } else if (allow && (!method == 'put' || endpoint == 'users')) {
+                                    if (method == 'put' && endpoint == 'users' && usr.role._id != '5be0037405c01d7f864a53dc') {
+                                        var splited = req.url.split('/');
+                                        User.findById(splited[splited.length -1], function(err, user) {
+                                            if (user.name != usr.name) {
+                                                return forbidden(res);
+                                            }
+                                        });
+                                    } else {
+                                            return next();
+                                    }
                                 } else {
                                     return forbidden(res);
                                 }

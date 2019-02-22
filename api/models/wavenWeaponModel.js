@@ -21,4 +21,12 @@ var weaponSchema = new Schema({
     }
 });
 
+weaponSchema.pre('find', function(next) {
+    this.populate({
+        path: 'weaponType',
+        model: 'WeaponType'
+    });
+    next();
+});
+
 module.export = mongoose.model('Weapon', weaponSchema);

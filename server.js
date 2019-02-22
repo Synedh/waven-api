@@ -25,6 +25,7 @@ var express     = require('express'),
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/Wavendb', { useNewUrlParser: true });
+mongoose.set('useFindAndModify', false);
 
 // setup the logger
 app.use(morgan('combined', { stream: logs.accessLogStream }));

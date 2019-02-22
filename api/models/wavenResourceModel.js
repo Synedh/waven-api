@@ -5,13 +5,19 @@ var Schema = mongoose.Schema;
 var resourceSchema = new Schema({
     element: {
         type: Schema.Types.ObjectId,
-        ref: 'Element',
-        default: null
+        ref: 'Element'
     },
     quantity: {
-        type: Number,
-        required: true
+        type: Number
     }
+});
+
+resourceSchema.pre('find', function(next) {
+    this.populate({
+        path: 'element',
+        model: 'Element'
+    });
+    next();
 });
 
 module.export = mongoose.model('Resource', resourceSchema);

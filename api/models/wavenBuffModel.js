@@ -4,9 +4,7 @@ var Schema = mongoose.Schema;
 
 var buffSchema = new Schema({
     name: {
-        type: String,
-        unique: true,
-        required: 'Enter the name of the buff'
+        type: String
     },
     iconUrl: {
         type: String

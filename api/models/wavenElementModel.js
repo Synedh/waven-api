@@ -5,8 +5,6 @@ var Schema = mongoose.Schema;
 var elementSchema = new Schema({
     name: {
         type: String,
-        unique: true,
-        required: 'Enter the name of the element'
     },
     iconUrl: {
         type: String

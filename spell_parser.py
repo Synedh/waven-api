@@ -7,13 +7,19 @@ import requests
 from urllib import request
 
 
-api_url = "https://waven-api.synedh.fr/"
-headers = {"Content-Type": "application/json", "Authorization": "Basic U3luZWRoOmVkYTI4Yjdm"}
+api_url = 'https://waven-api.synedh.fr/'
+headers = {'Content-Type': 'application/json', 'Authorization': 'Basic U3luZWRoOmVkYTI4Yjdm'}
 elements = {
-    "Air": "5be042b63fb2fa187ff753c0",
-    "Eau": "5be042cf3fb2fa187ff753c2",
-    "Feu": "5be042943fb2fa187ff753bf",
-    "Terre": "5be042c43fb2fa187ff753c1"
+    'Air': '5be042b63fb2fa187ff753c0',
+    'Eau': '5be042cf3fb2fa187ff753c2',
+    'Feu': '5be042943fb2fa187ff753bf',
+    'Terre': '5be042c43fb2fa187ff753c1'
+}
+classes = {
+    'iop': '5bd8169e6baf1b6a02e8fec2',
+    'xelor': '5bd816496baf1b6a02e8fec1',
+    'sram': '5c616d4ad6d2e31be49914cc',
+    'osamodas': '5c66cd21967304335696a843'
 }
 
 
@@ -24,8 +30,8 @@ def get(endpoint, id_data='', params = None):
         params = params
     )
     if response.status_code != 200:
-        raise Exception("Incorrect status code : " + str(response.status_code) + '\n' + response.text)
-        raise Exception("Incorrect status code : " + response.json())
+        raise Exception('Incorrect status code : ' + str(response.status_code) + '\n' + response.text)
+        # raise Exception('Incorrect status code : ' + response.json())
         exit()
     return response.json()
 
@@ -38,7 +44,7 @@ def post(endpoint, data):
     )
     if response.status_code != 200:
         print(response.json())
-        raise Exception("Incorrect status code : %d for reason :\n%s" % (response.status_code, response))
+        raise Exception('Incorrect status code : %d for reason :\n%s' % (response.status_code, response))
         exit()
     return response.json()
 
@@ -50,8 +56,8 @@ def put(endpoint, id_data, data):
         data = json.dumps(data)
     )
     if response.status_code != 200:
-        raise Exception("Incorrect status code : " + str(response.status_code))
-        raise Exception("Incorrect status code : " + response.json())
+        # raise Exception('Incorrect status code : ' + str(response.status_code))
+        raise Exception('Incorrect status code : ' + response.json())
         exit()
     return response.json()
 
@@ -62,87 +68,132 @@ def delete(endpoint, id_data):
         headers = headers
     )
     if response.status_code != 200:
-        # raise Exception("Incorrect status code : " + str(response.status_code))
-        raise Exception("Incorrect status code : " + str(response.json()))
+        # raise Exception('Incorrect status code : ' + str(response.status_code))
+        raise Exception('Incorrect status code : ' + str(response.json()))
         exit()
     return response.json()
 
 
+def get_page(url):
+    return ''.join([line.decode('utf8') for line in request.urlopen(url).readlines()])
+
+
 def get_weapons(html):
-    pass
+    matches = re.finditer(
+        r'<li class=\"vignettehero\"?\">(?:[\s\S]*?)src=\"(.*)\?w(?:[\s\S]*?)<p>\s?(.*?)<\/p>(?:[\s\S]*?)<h6.*?>(.*)<\/h6>(?:[\s\S]*?)<h7>(?:\s?([0-9]+)PA\s?\|?\s?)?((?:\s?\+\s?[0-9]\s?(?:Air|Terre|Eau|Feu))+)?\s?\|?\s?(?:\s?\|?\s?\+\s?([0-9]+)\s?R.serve\s?\|?\s?)?(?:([0-9]+)\s?PO\s?\|?\s?)?(Ligne)?(?:.*)?<\/h7>(?:[\s\S]*?)src=\"(.*)\?w(?:[\s\S]*?)<div.*?>(.*)<\/div>(?:[\s\S]*?)<\/li>', 
+        html.replace('&rsquo;', '\'').replace('<br />', ' ').replace('&nbsp;', ''), 
+        re.MULTILINE
+    )
+    weapons = []
+    for match in matches:
+        resources = []
+        if match.group(5):
+            resources_str = re.finditer(r'\+([0-9]+)\s([a-zA-Z]+)', match.group(5))
+            for resource_str in resources_str:
+                resource = {'element': elements[resource_str.group(2)], 'quantity': int(resource_str.group(1))}
+                resources.append(resource)
+        weapons.append({
+            'name': '',
+            'imageUrl': match.group(1),
+            'passive': {
+                'description': match.group(2)
+            },
+            'spell': {
+                'name': match.group(3),
+                'cost': int(match.group(4)) if match.group(4) else 0,
+                'stockpile': int(match.group(6)) if match.group(6) else 0,
+                'resources': resources,
+                'range': int(match.group(7)) if match.group(7) else None,
+                'line': True if match.group(8) else False
+            }
+        })
+    return weapons
 
 
 def get_spells(html):
-    regex = r"<li class=\"sort\">[\s\S]*?<img.*?src=\"(.*?)\?[\s\S]*?<h6>(.+)<\/h6>[\s\S]*?<h7>(?:\s?([0-9]+)PA\s\|\s?)?((?:\s?\+\s?[0-9] (?:Air|Terre|Eau|Feu))*)(?:\s?\|?\s?\+\s?([0-9]+) Réserve)?(?:.*)?<\/h7>(.*?)<\/[\s\S]*?<\/li>"
-    matches = re.finditer(regex, html.replace('&rsquo;', '\''), re.MULTILINE)
-    csv_string = "name;iconUrl;description;cost;stockpile;resources\n"
-    csv_string = ""
+    matches = re.finditer(
+        r'<li class=\"sort\">[\s\S]*?<img.*?src=\"(.*?)\?[\s\S]*?<h6>(.+)<\/h6>[\s\S]*?<h7>(?:\s?([0-9]+)PA\s?\|?\s?)?((?:\s?\+\s?[0-9]\s?(?:Air|Terre|Eau|Feu))+)?\s?\|?\s?(?:\s?\|?\s?\+\s?([0-9]+)\s?R.serve\s?\|?\s?)?(?:([0-9]+)\s?PO\s?\|?\s?)?(Ligne)?(?:.*)?<\/h7>(.*?)<\/[\s\S]*?<\/li>',
+        html.replace('&rsquo;', '\'').replace('​', ''),
+        re.MULTILINE
+    )
+    spells = []
     for match in matches:
-        csv_string += ("%s;%s;%s;%s;%s;%s\n" 
-            % (
-                match.group(2),
-                match.group(1),
-                match.group(6).replace('<br />', ' '), 
-                match.group(3) if match.group(3) else 0,
-                match.group(5) if match.group(5) else 0,
-                match.group(4) if match.group(4) else ''
-            )
-        )
-    return csv_string
+        resources = []
+        if match.group(4):
+            resources_str = re.finditer(r'\+([0-9]+)\s([a-zA-Z]+)', match.group(4))
+            for resource_str in resources_str:
+                resource = {'element': elements[resource_str.group(2)], 'quantity': int(resource_str.group(1))}
+                resources.append(resource)
+        spells.append({
+            'name': match.group(2),
+            'iconUrl': match.group(1),
+            'description': match.group(8).replace('<br />', ' '), 
+            'cost': int(match.group(3)) if match.group(3) else 0,
+            'stockpile': int(match.group(5)) if match.group(5) else 0,
+            'resources': resources,
+            'range': int(match.group(6)) if match.group(6) else None,
+            'line': True if match.group(7) else False
+        })
+    return spells
 
 
-def get_page(url):
-    html = ''.join([line.decode("utf8") for line in request.urlopen(url).readlines()])
-    return get_spells(html)
+def post_weapons(weapons, class_id=None):
+    posted_weapons = []
+    for weapon in weapons:
+        passive = post('passives', weapon['passive'])
+        spell = post('spells', weapon['spell'])
+        weaponType = post('weaponTypes', {
+            'imageUrl': weapon['imageUrl'],
+            'passives': [passive['_id']],
+            'spells': [spell['_id']],
+            'life': 0,
+            'damage': 0,
+            'movement': 0,
+        })
+        posted_weapon = post('weapons', {
+            'name': '',
+            'imageUrl': weapon['imageUrl'],
+            'iconUrl': '',
+            'weaponType': weaponType['_id']
+        })
+        print('Successfully added weapon ' + posted_weapon['name'] + ' with id ' + posted_weapon['_id'])
+        posted_weapons.append(posted_weapon['_id'])
+    if class_id:
+        weapons = get('classes', class_id)['weapons']
+        weapons += posted_weapons
+        put('classes', class_id, {'weapons': weapons})
 
 
-def post_spells(filename=None, spells_csv=None, class_id=None):
+def post_spells(spells, class_id=None):
     posted_spells = []
-    if filename:
-        with open(filename) as file:
-            for line in file:
-                line = line.split(';')
-                if len(line) > 2:
-                    resources_str = re.finditer(r'\+([0-9]+)\s([a-zA-Z]+)', line[-1])
-                    resources = []
-                    for resource_str in resources_str:
-                        resource = {"element": elements[resource_str.group(2)], "quantity": int(resource_str.group(1))}
-                        resources.append(resource)
-                    spell = {
-                        "name": line[0],
-                        "iconUrl": line[1],
-                        "description": line[2].replace('\u200b', ''),
-                        "cost": line[3],
-                        "stockpile": line[4],
-                        "resources": resources,
-                    }
-                    posted_spell = post('spells', spell)
-                    print('Successfully added spell ' + posted_spell['name'] + " with id " + posted_spell['_id'])
-                    posted_spells.append(posted_spell['id'])
-    elif spells_csv:
-        for line in spells_csv.split('\n'):
-            line = line.split(';')
-            if len(line) > 2:
-                resources_str = re.finditer(r'\+([0-9]+)\s([a-zA-Z]+)', line[-1])
-                resources = []
-                for resource_str in resources_str:
-                    resource = {"element": elements[resource_str.group(2)], "quantity": int(resource_str.group(1))}
-                    resources.append(resource)
-                spell = {
-                    "name": line[0],
-                    "iconUrl": line[1],
-                    "description": line[2].replace('\u200b', ''),
-                    "cost": line[3],
-                    "stockpile": line[4],
-                    "resources": resources,
-                }
-                posted_spell = post('spells', spell)
-                print('Successfully added spell ' + posted_spell['name'] + " with id " + posted_spell['_id'])
-                posted_spells.append(posted_spell['_id'])
+    for spell in spells:
+        posted_spell = post('spells', spell)
+        print('Successfully added spell ' + posted_spell['name'] + ' with id ' + posted_spell['_id'])
+        posted_spells.append(posted_spell['_id'])
     if class_id:
         spells = get('classes', class_id)['spells']
         spells += posted_spells
         put('classes', class_id, {'spells': spells})
+
+
+def update_weapons(weapons):
+    for weapon in weapons:
+        try:
+            weapon_id = get('weapons', params={'name': weapon['name']})[0]['_id']
+            put('weapons', weapon_id, data = weapon)
+            print("weapon " + weapon['name'] + "successfully updated.")
+        except IndexError as e:
+            print('Could not find weapon ' + weapon['name'])
+
+
+def update_spells(spells):
+    for spell in spells:
+        try:
+            spell_id = get('spells', params={'name': spell['name']})[0]['_id']
+            updated_spell = put('spells', spell_id, data = spell)
+            print("Spell %s with id %s successfully updated." % (spell['name'], updated_spell['_id']))
+        except IndexError as e:
+            print('Could not find spell ' + spell['name'])
 
 
 def delete_all_spells(class_id=None):
@@ -165,3 +216,7 @@ if __name__ == '__main__':
     # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/coeur-de-iop'), class_id = '5bd8169e6baf1b6a02e8fec2')
     # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/sablier-de-xelor'), class_id = '5bd816496baf1b6a02e8fec1')
     # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/ombre-de-sram'), class_id = '5c616d4ad6d2e31be49914cc')
+    # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/fouet-dosamodas'), class_id = '5c66cd21967304335696a843')
+    # print(json.dumps(get_weapons(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), indent=4))
+    # post_weapons(get_weapons(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), classes['osamodas'])
+    # update_spells(get_spells(get_page('https://blog.waven-game.com/fr/sablier-de-xelor')))

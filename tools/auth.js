@@ -40,7 +40,7 @@ exports.basic_auth = function(req, res, next) {
                                 var endpoint = req.originalUrl.split('/')[1];
                                 if (err) {
                                     return res.json(err);
-                                } else if (allow && (!method == 'put' || endpoint == 'users')) {
+                                } else if (allow) {
                                     if (method == 'put' && endpoint == 'users' && usr.role._id != '5be0037405c01d7f864a53dc') {
                                         var splited = req.url.split('/');
                                         User.findById(splited[splited.length -1], function(err, user) {

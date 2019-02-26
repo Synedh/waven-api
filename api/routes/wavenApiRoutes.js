@@ -12,7 +12,7 @@ module.exports = function(app) {
         wavenTransfer = require('../controllers/wavenTransferController.js'),
         wavenSpell = require('../controllers/wavenSpellController.js'),
         wavenFellow = require('../controllers/wavenFellowController.js'),
-        wavenWeaponType = require('../controllers/wavenWeaponTypeController.js'),
+        wavenWeaponSkin = require('../controllers/wavenWeaponSkinController.js'),
         wavenWeapon = require('../controllers/wavenWeaponController.js'),
         wavenRace = require('../controllers/wavenRaceController.js');
 
@@ -122,14 +122,14 @@ module.exports = function(app) {
         .delete(wavenFellow.delete_a_fellow);
 
 
-    app.route('/weaponTypes')
-        .get(wavenWeaponType.list_all_weaponTypes)
-        .post(wavenWeaponType.create_a_weaponType);
+    app.route('/weaponSkins')
+        .get(wavenWeaponSkin.list_all_weapon_skins)
+        .post(wavenWeaponSkin.create_a_weapon_skin);
 
-    app.route('/weaponTypes/:weaponTypeId')
-        .get(wavenWeaponType.read_a_weaponType)
-        .put(wavenWeaponType.update_a_weaponType)
-        .delete(wavenWeaponType.delete_a_weaponType);
+    app.route('/weaponSkins/:weaponSkinId')
+        .get(wavenWeaponSkin.read_a_weapon_skin)
+        .put(wavenWeaponSkin.update_a_weapon_skin)
+        .delete(wavenWeaponSkin.delete_a_weapon_skin);
 
 
     app.route('/weapons')

@@ -2,14 +2,14 @@
   "title": "Waven API - Documentation",
   "url": "https://waven-api.synedh.fr",
   "name": "waven-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Global Waven game API",
   "sampleUrl": false,
   "defaultVersion": "0.0.0",
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2019-01-29T16:44:03.999Z",
+    "time": "2019-02-25T18:39:46.998Z",
     "url": "http://apidocjs.com",
     "version": "0.17.7"
   }

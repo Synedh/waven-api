@@ -1,19 +1,19 @@
 'use strict';
 
 /**
- * @apiDefine WeaponNotFoundError
+ * @apiDefine WeaponTypeNotFoundError
  *
- * @apiError WeaponNotFound Cannot find Weapon with given id.
+ * @apiError WeaponTypeNotFound Cannot find WeaponType with given id.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find Weapon with id :id"
+ *       "error": "Cannot find WeaponType with id :id"
  *     }
  */
 
-var mongoose = require('mongoose'),
-  Weapon = mongoose.model('Weapon');
+var mongoose    = require('mongoose'),
+    Weapon = mongoose.model('Weapon');
 
 exports.list_all_weapons = function(req, res) {
   Weapon.find(req.query, function(err, weapon) {
@@ -35,17 +35,21 @@ exports.create_a_weapon = function(req, res) {
 
 
 /**
- * @api {get} /weapons/:id Request Weapon of given id.
- * @apiName GetWeapon
- * @apiGroup Weapon
+ * @api {get} /buffs/:id Request WeaponType of given id.
+ * @apiName GetWeaponType
+ * @apiGroup WeaponType
  *
- * @apiParam {Number} id Weapon unique ID.
+ * @apiParam {Number} id WeaponType unique ID.
  *
- * @apiSuccess {String} name name of the Weapon.
- * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon.
- * @apiSuccess {String} imageUrl  Url of image corresponding to the Weapon.
- * @apiSuccess {String} description  Description of the Weapon.
- * @apiSuccess {WeaponType} weaponType  Weapon type of the Weapon.
+ * @apiSuccess {String} name name of the Weapon type.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon type.
+ * @apiSuccess {String} imageUrl  Url of icon corresponding to the Weapon type.
+ * @apiSuccess {String} description  Description of the Weapon type.
+ * @apiSuccess {Passive[]} passives  Passives of the Weapon type.
+ * @apiSuccess {Spells[]} spells  Special spells of the Weapon type.
+ * @apiSuccess {Number} life  Default life of the Weapon type.
+ * @apiSuccess {Number} damage  Default damage of the Weapon type.
+ * @apiSuccess {Number} movement  default movement points of the Weapon type.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -54,10 +58,14 @@ exports.create_a_weapon = function(req, res) {
  *       "iconUrl": ""
  *       "imageUrl": ""
  *       "description": ""
- *       "weaponType": null
+ *       "passives": ""
+ *       "spells": ""
+ *       "life": ""
+ *       "damage": ""
+ *       "movement": ""
  *     }
  *
- * @apiUse WeaponNotFoundError
+ * @apiUse WeaponTypeNotFoundError
  */
 
 

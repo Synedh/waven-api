@@ -15,8 +15,8 @@ var express     = require('express'),
     Transfer    = require('./api/models/wavenTransferModel'),
     Spell       = require('./api/models/wavenSpellModel'),
     Fellow      = require('./api/models/wavenFellowModel'),
-    WeaponType  = require('./api/models/wavenWeaponTypeModel'),
     Weapon      = require('./api/models/wavenWeaponModel'),
+    WeaponSkin  = require('./api/models/wavenWeaponSkinModel'),
     Race        = require('./api/models/wavenRaceModel'),
     routes      = require('./api/routes/wavenApiRoutes'),
     auth        = require('./tools/auth'),
@@ -33,6 +33,9 @@ app.use(morgan('combined'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use('', express.static(__dirname + '/index'));
+app.use('/doc', express.static(__dirname + '/doc'));
 
 app.use(auth.basic_auth);
 

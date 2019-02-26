@@ -1,3 +1,4 @@
+
 #-*- coding:utf-8 -*-
 
 import re
@@ -17,9 +18,10 @@ elements = {
 }
 classes = {
     'iop': '5bd8169e6baf1b6a02e8fec2',
-    'xelor': '5bd816496baf1b6a02e8fec1',
+    'xel': '5bd816496baf1b6a02e8fec1',
     'sram': '5c616d4ad6d2e31be49914cc',
-    'osamodas': '5c66cd21967304335696a843'
+    'osa': '5c66cd21967304335696a843',
+    'eni': '5c70381762d9ae30adc37892'
 }
 
 
@@ -75,13 +77,13 @@ def delete(endpoint, id_data):
 
 
 def get_page(url):
-    return ''.join([line.decode('utf8') for line in request.urlopen(url).readlines()])
+    return ''.join([line.decode('utf-8') for line in request.urlopen(url).readlines()])
 
 
 def get_weapons(html):
     matches = re.finditer(
         r'<li class=\"vignettehero\"?\">(?:[\s\S]*?)src=\"(.*)\?w(?:[\s\S]*?)<p>\s?(.*?)<\/p>(?:[\s\S]*?)<h6.*?>(.*)<\/h6>(?:[\s\S]*?)<h7>(?:\s?([0-9]+)PA\s?\|?\s?)?((?:\s?\+\s?[0-9]\s?(?:Air|Terre|Eau|Feu))+)?\s?\|?\s?(?:\s?\|?\s?\+\s?([0-9]+)\s?R.serve\s?\|?\s?)?(?:([0-9]+)\s?PO\s?\|?\s?)?(Ligne)?(?:.*)?<\/h7>(?:[\s\S]*?)src=\"(.*)\?w(?:[\s\S]*?)<div.*?>(.*)<\/div>(?:[\s\S]*?)<\/li>', 
-        html.replace('&rsquo;', '\'').replace('<br />', ' ').replace('&nbsp;', ''), 
+        html.replace('&rsquo;', '\'').replace('<br />', ' ').replace('&nbsp;', '').replace('​', ''), 
         re.MULTILINE
     )
     weapons = []
@@ -100,6 +102,8 @@ def get_weapons(html):
             },
             'spell': {
                 'name': match.group(3),
+                'iconUrl': match.group(9),
+                'description': match.group(10),
                 'cost': int(match.group(4)) if match.group(4) else 0,
                 'stockpile': int(match.group(6)) if match.group(6) else 0,
                 'resources': resources,
@@ -142,21 +146,25 @@ def post_weapons(weapons, class_id=None):
     for weapon in weapons:
         passive = post('passives', weapon['passive'])
         spell = post('spells', weapon['spell'])
-        weaponType = post('weaponTypes', {
-            'imageUrl': weapon['imageUrl'],
-            'passives': [passive['_id']],
-            'spells': [spell['_id']],
-            'life': 0,
-            'damage': 0,
-            'movement': 0,
-        })
-        posted_weapon = post('weapons', {
+        weaponSkin = post('weaponSkins', {
             'name': '',
             'imageUrl': weapon['imageUrl'],
             'iconUrl': '',
-            'weaponType': weaponType['_id']
+            'description': ''
         })
-        print('Successfully added weapon ' + posted_weapon['name'] + ' with id ' + posted_weapon['_id'])
+        posted_weapon = post('weapons', {
+            'name': '',
+            'iconUrl': '',
+            'description': '',
+            'imageUrl': weapon['imageUrl'],
+            'passives': [passive['_id']],
+            'spells': [spell['_id']],
+            'weaponSkins': [weaponSkin['_id']],
+            'life': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            'damage': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            'movement': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        })
+        print('Successfully added weapon with id ' + posted_weapon['_id'])
         posted_weapons.append(posted_weapon['_id'])
     if class_id:
         weapons = get('classes', class_id)['weapons']
@@ -210,13 +218,22 @@ def delete_all_spells(class_id=None):
             print(put('WeaponTypes', weaponType['_id'], {'spells': []}))
 
 
+def delete_all_weapons():
+    for weapon in get('weapons'):
+        print(delete('weapons', weapon['_id'])['message'])
+    for passive in get('passives'):
+        print(delete('passives', passive['_id'])['message'])
+
 
 if __name__ == '__main__':
     # delete_all_spells()
-    # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/coeur-de-iop'), class_id = '5bd8169e6baf1b6a02e8fec2')
-    # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/sablier-de-xelor'), class_id = '5bd816496baf1b6a02e8fec1')
-    # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/ombre-de-sram'), class_id = '5c616d4ad6d2e31be49914cc')
-    # post_spells(spells_csv = get_page('https://blog.waven-game.com/fr/fouet-dosamodas'), class_id = '5c66cd21967304335696a843')
     # print(json.dumps(get_weapons(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), indent=4))
-    # post_weapons(get_weapons(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), classes['osamodas'])
+    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/sablier-de-xelor')), classes['xel'])
+    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/coeur-de-iop')), classes['iop'])
+    post_spells(get_spells(get_page('https://blog.waven-game.com/fr//ombre-de-sram')), classes['sram'])
+    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), classes['osa'])
+    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/mains-deniripsa')), classes['eni'])
+    # post_weapons(get_weapons(get_page('https://blog.waven-game.com/fr/mains-deniripsa')), classes['eni'])
+    # post_spells(get_spells(get_page('https://blog.waven-game.com/fr/mains-deniripsa')), classes['eni'])
     # update_spells(get_spells(get_page('https://blog.waven-game.com/fr/sablier-de-xelor')))
+    # delete_all_spells()

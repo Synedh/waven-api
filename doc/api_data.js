@@ -817,6 +817,349 @@ define({ "api": [
     }
   },
   {
+    "type": "delete",
+    "url": "/users/:id",
+    "title": "Delete user of given id.",
+    "name": "DeleteUser",
+    "permission": [
+      {
+        "name": "admin"
+      }
+    ],
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"message\": \"User successfully deleted.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "api/controllers/userController.js",
+    "groupTitle": "User",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "UserNotFound",
+            "description": "<p>Cannot find User with given id.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"Cannot find User with id :id.\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/users/:id",
+    "title": "Request user of given id.",
+    "name": "GetUser",
+    "permission": [
+      {
+        "name": "admin"
+      }
+    ],
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>id of the User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Role",
+            "optional": false,
+            "field": "role",
+            "description": "<p>role of the User.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"_id\": \"azerty1234567890\",\n  \"name\": \"Blabla\",\n  \"email\": \"main@email.com\",\n  \"role\": {\n     \"rule_get\": [\n         \"*\"\n     ],\n     \"rule_post\": [\n         \"*\"\n     ],\n     \"rule_put\": [\n         \"*\"\n     ],\n     \"rule_delete\": [\n         \"*\"\n     ],\n     \"_id\": \"azerty1234567890\",\n     \"name\": \"Role\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "api/controllers/userController.js",
+    "groupTitle": "User",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "UserNotFound",
+            "description": "<p>Cannot find User with given id.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"Cannot find User with id :id.\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/users/:id",
+    "title": "Update user of given id.",
+    "name": "PutUser",
+    "permission": [
+      {
+        "name": "admin"
+      }
+    ],
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the User.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the User.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password of the User.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "roleId",
+            "description": "<p>ID of the User's role.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>id of the new User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the new User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the new User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "roleId",
+            "description": "<p>ID of the User's role.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"_id\": \"azerty1234567890\",\n  \"name\": \"Blabla\",\n  \"email\": \"main@email.com\",\n  \"role\": {\n     \"rule_get\": [\n         \"*\"\n     ],\n     \"rule_post\": [\n         \"*\"\n     ],\n     \"rule_put\": [\n         \"*\"\n     ],\n     \"rule_delete\": [\n         \"*\"\n     ],\n     \"_id\": \"azerty1234567890\",\n     \"name\": \"Role\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "api/controllers/userController.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "put",
+    "url": "/users/:id",
+    "title": "Update user of given id.",
+    "name": "PutUser",
+    "permission": [
+      {
+        "name": "none"
+      }
+    ],
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>User unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the User.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Password of the User.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>id of the new User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the new User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email of the new User.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Role",
+            "optional": false,
+            "field": "role",
+            "description": "<p>role of the new User.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"_id\": \"azerty1234567890\",\n  \"name\": \"Blabla\",\n  \"email\": \"main@email.com\",\n  \"role\": {\n     \"rule_get\": [\n         \"*\"\n     ],\n     \"rule_post\": [\n         \"*\"\n     ],\n     \"rule_put\": [\n         \"*\"\n     ],\n     \"rule_delete\": [\n         \"*\"\n     ],\n     \"_id\": \"azerty1234567890\",\n     \"name\": \"Role\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "api/controllers/userController.js",
+    "groupTitle": "User",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "UserNotFound",
+            "description": "<p>Cannot find User with given id.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"Cannot find User with id :id.\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
     "type": "get",
     "url": "/weapons/:id",
     "title": "Request Weapon of given id.",

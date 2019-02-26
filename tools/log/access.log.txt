@@ -1,7 +1,3 @@
-/home/synedh/waven-api/tools/log/20190207-0000-01-access.log
-/home/synedh/waven-api/tools/log/20190208-0000-01-access.log
-/home/synedh/waven-api/tools/log/20190209-0000-01-access.log
-/home/synedh/waven-api/tools/log/20190210-0000-01-access.log
 /home/synedh/waven-api/tools/log/20190211-0000-01-access.log
 /home/synedh/waven-api/tools/log/20190212-0000-01-access.log
 /home/synedh/waven-api/tools/log/20190214-0000-01-access.log
@@ -12,3 +8,7 @@
 /home/synedh/waven-api/tools/log/20190219-0000-01-access.log
 /home/synedh/waven-api/tools/log/20190220-0000-01-access.log
 /home/synedh/waven-api/tools/log/20190221-0000-01-access.log
+/home/synedh/waven-api/tools/log/20190222-0000-01-access.log
+/home/synedh/waven-api/tools/log/20190223-0000-01-access.log
+/home/synedh/waven-api/tools/log/20190224-0000-01-access.log
+/home/synedh/waven-api/tools/log/20190225-0000-01-access.log

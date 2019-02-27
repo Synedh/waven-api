@@ -8,12 +8,14 @@ var basicAuth = require("basic-auth"),
 
 function unauthorized(res) {
     res.set("WWW-Authenticate", "Basic realm=Authorization Required");
-    return res.sendStatus(401);
+    res.status(401);
+    res.send({"error": "Unauthorized"});
 }
 
 function forbidden(res) {
     res.set("WWW-Authenticate", "Basic realm=Authorization Required");
-    return res.sendStatus(403);
+    res.status(403);
+    res.send({"error": "Forbidden"});
 }
 
 exports.basic_auth = function(req, res, next) {

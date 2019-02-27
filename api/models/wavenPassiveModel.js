@@ -4,13 +4,16 @@ var Schema = mongoose.Schema;
 
 var passiveSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        default: ""
     },
     iconUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     description: {
-        type: String
+        type: String,
+        default: ""
     },
 });
 

@@ -4,16 +4,20 @@ var Schema = mongoose.Schema;
 
 var weaponSkinSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        default: ""
     },
     iconUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     imageUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     description: {
-        type: String
+        type: String,
+        default: ""
     }
 });
 

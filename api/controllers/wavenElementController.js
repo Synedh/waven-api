@@ -5,15 +5,40 @@
  *
  * @apiError ElementNotFound Cannot find Element with given id.
  *
- * @apiErrorExample Error-Response:
+ * @apiErrorExample 404 Not Found
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find Element with id :id."
+ *         "error": "Cannot find Element with id :id."
  *     }
  */
 
-var mongoose = require('mongoose'),
-  Element = mongoose.model('Element');
+var mongoose    = require('mongoose'),
+    Element     = mongoose.model('Element');
+
+
+/**
+ * @api {get} /elements LIST Elements
+ * @apiName ListElement
+ * @apiGroup ELEMENT
+ *
+ * @apiDescription List all existing Elements.
+ *
+ * @apiSuccess {String} _id  id of the Element.
+ * @apiSuccess {String} name  Name of the Element.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Element.
+ *
+ * @apiSuccessExample Success-Response
+ *     HTTP/1.1 200 OK
+ *     [
+ *         {
+ *             "_id": "",
+ *             "name": "",
+ *             "iconUrl": ""
+ *         }
+ *     ]
+ *
+ * @apiUse UnauthorizedError
+ */
 
 exports.list_all_elements = function(req, res) {
   Element.find(req.query, function(err, element) {
@@ -35,22 +60,27 @@ exports.create_an_element = function(req, res) {
 
 
 /**
- * @api {get} /elements/:id Request Element of given id.
+ * @api {get} /elements/:id GET Element
  * @apiName GetElement
- * @apiGroup Element
+ * @apiGroup ELEMENT
  *
- * @apiParam {Number} id Element unique ID.
+ * @apiDescription Request element with given id.
  *
+ * @apiParam {String} id Element unique ID.
+ *
+ * @apiSuccess {String} _id  id of the Element.
  * @apiSuccess {String} name  Name of the Element.
  * @apiSuccess {String} iconUrl Url of icon corresponding to the Element.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "name": "Air",
- *       "iconUrl": "https://random.url"
+ *         "_id": "",
+ *         "name": "",
+ *         "iconUrl": ""
  *     }
  *
+ * @apiUse UnauthorizedError
  * @apiUse ElementNotFoundError
  */
 

@@ -5,15 +5,56 @@
  *
  * @apiError WeaponTypeNotFound Cannot find WeaponType with given id.
  *
- * @apiErrorExample Error-Response:
+ * @apiErrorExample 404 Not Found
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find WeaponType with id :id"
+ *         "error": "Cannot find WeaponType with id :id"
  *     }
  */
 
 var mongoose    = require('mongoose'),
-    Weapon = mongoose.model('Weapon');
+    Weapon      = mongoose.model('Weapon');
+
+
+/**
+ * @api {get} /buffs LIST Weapons
+ * @apiName ListWeapon
+ * @apiGroup WEAPON
+ *
+ * @apiDescription List all existing Weapons.
+ *
+ * @apiSuccess {String} _id  id of the Weapon.
+ * @apiSuccess {String} name name of the Weapon.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon.
+ * @apiSuccess {String} imageUrl  Url of icon corresponding to the Weapon.
+ * @apiSuccess {String} description  Description of the Weapon.
+ * @apiSuccess {Passive[]} passives  Passives of the Weapon.
+ * @apiSuccess {Spells[]} spells  Unique spells of the Weapon.
+ * @apiSuccess {weaponSkin[]} weaponSkin Skins of the Weapon.
+ * @apiSuccess {Number[]} life  Array of numbers containing life of the weapon at each level.
+ * @apiSuccess {Number[]} damage  Array of numbers containing damage values of the weapon at each level.
+ * @apiSuccess {Number[]} movement  Array of numbers containing movement poitns of the weapon at each level.
+ *
+ * @apiSuccessExample Success-Response
+ *     HTTP/1.1 200 OK
+ *     [
+ *         {
+ *             "_id": "",
+ *             "name": "",
+ *             "iconUrl": "",
+ *             "imageUrl": "",
+ *             "description": "",
+ *             "spells": [],
+ *             "passives": [],
+ *             "weaponSkins": [],
+ *             "life": [],
+ *             "damage": [],
+ *             "movement": []
+ *         }
+ *     ]
+ *
+ * @apiUse UnauthorizedError
+ */
 
 exports.list_all_weapons = function(req, res) {
   Weapon.find(req.query, function(err, weapon) {
@@ -35,36 +76,43 @@ exports.create_a_weapon = function(req, res) {
 
 
 /**
- * @api {get} /buffs/:id Request WeaponType of given id.
- * @apiName GetWeaponType
- * @apiGroup WeaponType
+ * @api {get} /buffs/:id GET Weapon
+ * @apiName GetWeapon
+ * @apiGroup WEAPON
  *
- * @apiParam {Number} id WeaponType unique ID.
+ * @apiDescription Request Weapon of given id.
  *
- * @apiSuccess {String} name name of the Weapon type.
- * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon type.
- * @apiSuccess {String} imageUrl  Url of icon corresponding to the Weapon type.
- * @apiSuccess {String} description  Description of the Weapon type.
- * @apiSuccess {Passive[]} passives  Passives of the Weapon type.
- * @apiSuccess {Spells[]} spells  Special spells of the Weapon type.
- * @apiSuccess {Number} life  Default life of the Weapon type.
- * @apiSuccess {Number} damage  Default damage of the Weapon type.
- * @apiSuccess {Number} movement  default movement points of the Weapon type.
+ * @apiParam {Number} id Weapon unique ID.
  *
- * @apiSuccessExample Success-Response:
+ * @apiSuccess {String} _id  id of the Weapon.
+ * @apiSuccess {String} name name of the Weapon.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon.
+ * @apiSuccess {String} imageUrl  Url of icon corresponding to the Weapon.
+ * @apiSuccess {String} description  Description of the Weapon.
+ * @apiSuccess {Passive[]} passives  Passives of the Weapon.
+ * @apiSuccess {Spells[]} spells  Unique spells of the Weapon.
+ * @apiSuccess {weaponSkin[]} weaponSkin Skins of the Weapon.
+ * @apiSuccess {Number[]} life  Array of numbers containing life of the weapon at each level.
+ * @apiSuccess {Number[]} damage  Array of numbers containing damage values of the weapon at each level.
+ * @apiSuccess {Number[]} movement  Array of numbers containing movement poitns of the weapon at each level.
+ *
+ * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     {
- *       "name": "",
- *       "iconUrl": ""
- *       "imageUrl": ""
- *       "description": ""
- *       "passives": ""
- *       "spells": ""
- *       "life": ""
- *       "damage": ""
- *       "movement": ""
+ *         "_id": "",
+ *         "name": "",
+ *         "iconUrl": "",
+ *         "imageUrl": "",
+ *         "description": "",
+ *         "spells": [],
+ *         "passives": [],
+ *         "weaponSkins": [],
+ *         "life": [],
+ *         "damage": [],
+ *         "movement": []
  *     }
  *
+ * @apiUse UnauthorizedError
  * @apiUse WeaponTypeNotFoundError
  */
 

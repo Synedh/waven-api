@@ -5,12 +5,15 @@ var Schema = mongoose.Schema;
 var elementSchema = new Schema({
     name: {
         type: String,
+        default: ""
     },
     iconUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     imageUrl: {
-        type: String
+        type: String,
+        default: ""
     }
 });
 

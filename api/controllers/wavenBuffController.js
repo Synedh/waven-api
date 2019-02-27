@@ -5,15 +5,42 @@
  *
  * @apiError BuffNotFound Cannot find Buff with given id.
  *
- * @apiErrorExample Error-Response:
+ * @apiErrorExample 404 Not Found
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find Buff with id :id."
+ *         "error": "Cannot find Buff with id :id."
  *     }
  */
 
-var mongoose = require('mongoose'),
-  Buff = mongoose.model('Buff');
+var mongoose    = require('mongoose'),
+    Buff        = mongoose.model('Buff');
+
+
+/**
+ * @api {get} /buffs LIST Buffs
+ * @apiName ListBuff
+ * @apiGroup BUFF
+ *
+ * @apiDescription List all existing buffs.
+ *
+ * @apiSuccess {String} _id  id of the Buff.
+ * @apiSuccess {String} name  Name of the Buff.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Buff.
+ * @apiSuccess {String} description  Description of the Element.
+ *
+ * @apiSuccessExample Success-Response
+ *     HTTP/1.1 200 OK
+ *     [
+ *         {
+ *             "_id": "",
+ *             "name": "",
+ *             "iconUrl": ""
+ *             "description": ""
+ *         }
+ *     ]
+ *
+ * @apiUse UnauthorizedError
+ */
 
 exports.list_all_buffs = function(req, res) {
   Buff.find(req.query, function(err, buff) {
@@ -35,24 +62,29 @@ exports.create_a_buff = function(req, res) {
 
 
 /**
- * @api {get} /buffs/:id Request Buff of given id.
+ * @api {get} /buffs/:id GET Buff
  * @apiName GetBuff
- * @apiGroup Buff
+ * @apiGroup BUFF
  *
- * @apiParam {Number} id Buff unique ID.
+ * @apiDescription Get buff of given id.
  *
+ * @apiParam {String} id Buff unique ID.
+ *
+ * @apiSuccess {String} _id  id of the Buff.
  * @apiSuccess {String} name  Name of the Buff.
  * @apiSuccess {String} iconUrl  Url of icon corresponding to the Buff.
  * @apiSuccess {String} description  Description of the Element.
  *
- * @apiSuccessExample Success-Response:
+ * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     {
- *       "name": "Burn",
- *       "iconUrl": "https://i.kym-cdn.com/entries/icons/original/000/000/043/disaster-girl.jpg"
- *       "description": "I like to see the world burning"
+ *          "_id": "",
+ *          "name": "",
+ *          "iconUrl": ""
+ *          "description": ""
  *     }
  *
+ * @apiUse UnauthorizedError
  * @apiUse BuffNotFoundError
  */
 

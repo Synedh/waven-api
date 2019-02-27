@@ -5,15 +5,15 @@
  *
  * @apiError ClassNotFound Cannot find Class with given id.
  *
- * @apiErrorExample Error-Response:
+ * @apiErrorExample 404 Not Found
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find Class with id :id."
+ *         "error": "Cannot find Class with id :id."
  *     }
  */
 
-var mongoose = require('mongoose'),
-  Race = mongoose.model('Race');
+var mongoose    = require('mongoose'),
+    Race        = mongoose.model('Race');
 
 exports.list_all_races = function(req, res) {
   Race.find(req.query, function(err, race) {
@@ -22,6 +22,41 @@ exports.list_all_races = function(req, res) {
     res.json(race);
   });
 };
+
+
+/**
+ * @api {get} /classes LIST Classes
+ * @apiName ListClass
+ * @apiGroup CLASS
+ *
+ * @apiDescription List all existing classes.
+ *
+ * @apiSuccess {String} _id  id of the Class.
+ * @apiSuccess {String} name  Short name of the Class.
+ * @apiSuccess {String} fullName  Full name of the Class.
+ * @apiSuccess {String} portaitUrl  Url of portait corresponding to the Class.
+ * @apiSuccess {String} imageUrl  Url of image corresponding to the Class.
+ * @apiSuccess {String} description  Description of the Class.
+ * @apiSuccess {Weapon[]} weapons  List of weapons of the Classe.
+ * @apiSuccess {Spell[]} spells  List of spells of the Class.
+ *
+ * @apiSuccessExample Success-Response
+ *     HTTP/1.1 200 OK
+ *     [
+ *         {
+ *             "_id": "",
+ *             "name": "",
+ *             "fullName": "",
+ *             "portaitUrl": "",
+ *             "imageUrl": "",
+ *             "description": "",
+ *             "weapons": [],
+ *             "spells": []
+ *         }
+ *     ]
+ *
+ * @apiUse UnauthorizedError
+ */
 
 
 exports.create_a_race = function(req, res) {
@@ -35,34 +70,37 @@ exports.create_a_race = function(req, res) {
 
 
 /**
- * @api {get} /classes/:id Request Class of given id.
+ * @api {get} /classes/:id GET Class
  * @apiName GetClass
- * @apiGroup Class
+ * @apiGroup CLASS
  *
- * @apiParam {Number} id Class unique ID.
+ * @apiDescription Request Class of given id.
  *
- * @apiSuccess {String} name  Name of the Class.
+ * @apiParam {String} id Class unique ID.
+ *
+ * @apiSuccess {String} _id  id of the Cass.
+ * @apiSuccess {String} name  Short name of the Class.
+ * @apiSuccess {String} fullName  Full name of the Class.
  * @apiSuccess {String} portaitUrl  Url of portait corresponding to the Class.
  * @apiSuccess {String} imageUrl  Url of image corresponding to the Class.
- * @apiSuccess {String[]} tags  Tags of the Class.
  * @apiSuccess {String} description  Description of the Class.
- * @apiSuccess {Weapon[]} weapons  [Empty - Do not use] List of weapons of the Classe.
- * @apiSuccess {WeaponTypes[]} weaponTypes  List of differents types of weapons the Class.
+ * @apiSuccess {Weapon[]} weapons  List of weapons of the Classe.
  * @apiSuccess {Spell[]} spells  List of spells of the Class.
  *
- * @apiSuccessExample Success-Response:
+ * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     {
- *       "name": "",
- *       "portaitUrl": ""
- *       "imageUrl": ""
- *       "tags": []
- *       "description": ""
- *       "weapons": []
- *       "weaponTypes": []
- *       "spells": []
+ *         "_id": "",
+ *         "name": "",
+ *         "fullName": "",
+ *         "portaitUrl": "",
+ *         "imageUrl": "",
+ *         "description": "",
+ *         "weapons": [],
+ *         "spells": []
  *     }
  *
+ * @apiUse UnauthorizedError
  * @apiUse ClassNotFoundError
  */
 

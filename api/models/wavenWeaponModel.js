@@ -4,28 +4,35 @@ var mongoose = require('mongoose'),
 
 var weaponSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        default: ""
     },
     iconUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     imageUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     description: {
-        type: String
+        type: String,
+        default: ""
     },
     spells: {
         type: [Schema.Types.ObjectId],
-        ref: 'Spell'
+        ref: 'Spell',
+        default: []
     },
     passives: {
         type: [Schema.Types.ObjectId],
-        ref: 'Passive'
+        ref: 'Passive',
+        default: []
     },
     weaponSkins: {
         type: [Schema.Types.ObjectId],
-        ref: 'WeaponSkin'
+        ref: 'WeaponSkin',
+        default: []
     },
     life: {
         type: [Number],

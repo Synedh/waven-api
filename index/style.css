@@ -1,0 +1,28 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+h1 {
+    font-variant: small-caps;
+    font-size: 72px;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+.doc {
+    text-align: center;
+    font-size: 25px;
+    margin: 20px;
+    font-weight: bold;
+}
+
+.contact_list .contact {
+    padding-left: 20%;
+}

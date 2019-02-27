@@ -5,15 +5,43 @@
  *
  * @apiError WeaponNotFound Cannot find Weapon with given id.
  *
- * @apiErrorExample Error-Response:
+ * @apiErrorExample 404 Not Found
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find Weapon with id :id"
+ *         "error": "Cannot find Weapon with id :id"
  *     }
  */
 
-var mongoose    = require('mongoose'),
-    WeaponSkin  = mongoose.model('WeaponSkin');
+var mongoose      = require('mongoose'),
+    WeaponSkin    = mongoose.model('WeaponSkin');
+
+
+/**
+ * @api {get} /weapons LIST WeaponSkins
+ * @apiName ListWeaponSkin
+ * @apiGroup WEAPONSKIN
+ *
+ * @apiDescription List all existing Weapon Skins.
+ *
+ * @apiSuccess {String} _id  id of the weapon Skin.
+ * @apiSuccess {String} name name of the Weapon Skin.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon Skin.
+ * @apiSuccess {String} imageUrl  Url of image corresponding to the Weapon Skin.
+ * @apiSuccess {String} description  Description of the Weapon Skin.
+ *
+ * @apiSuccessExample Success-Response
+ *     HTTP/1.1 200 OK
+ *     [
+ *         {
+ *             "name": "",
+ *             "iconUrl": "",
+ *             "imageUrl": "",
+ *             "description": ""
+ *         }
+ *     ]
+ *
+ * @apiUse UnauthorizedError
+ */
 
 exports.list_all_weapon_skins = function(req, res) {
   WeaponSkin.find(req.query, function(err, weapon_skins) {
@@ -36,28 +64,30 @@ exports.create_a_weapon_skin = function(req, res) {
 
 
 /**
- * @api {get} /weapons/:id Request Weapon of given id.
- * @apiName GetWeapon
- * @apiGroup Weapon
+ * @api {get} /weapons/:id GET WeaponSkin
+ * @apiName GetWeaponSkin
+ * @apiGroup WEAPONSKIN
  *
- * @apiParam {Number} id Weapon unique ID.
+ * @apiDescription Request WeaponSkin of given id.
  *
- * @apiSuccess {String} name name of the Weapon.
- * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon.
- * @apiSuccess {String} imageUrl  Url of image corresponding to the Weapon.
- * @apiSuccess {String} description  Description of the Weapon.
- * @apiSuccess {WeaponType} weaponType  Weapon type of the Weapon.
+ * @apiParam {Number} id WeaponSkin unique ID.
  *
- * @apiSuccessExample Success-Response:
+ * @apiSuccess {String} _id  id of the weapon Skin.
+ * @apiSuccess {String} name name of the Weapon Skin.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Weapon Skin.
+ * @apiSuccess {String} imageUrl  Url of image corresponding to the Weapon Skin.
+ * @apiSuccess {String} description  Description of the Weapon Skin.
+ *
+ * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     {
- *       "name": "",
- *       "iconUrl": ""
- *       "imageUrl": ""
- *       "description": ""
- *       "weaponType": null
+ *         "name": "",
+ *         "iconUrl": "",
+ *         "imageUrl": "",
+ *         "description": ""
  *     }
  *
+ * @apiUse UnauthorizedError
  * @apiUse WeaponNotFoundError
  */
 

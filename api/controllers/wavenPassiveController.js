@@ -5,15 +5,42 @@
  *
  * @apiError PassiveNotFound Cannot find Passive with given id.
  *
- * @apiErrorExample Error-Response:
+ * @apiErrorExample 404 Not Found
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find Passive with id :id."
+ *         "error": "Cannot find Passive with id :id."
  *     }
  */
 
-var mongoose = require('mongoose'),
-  Passive = mongoose.model('Passive');
+var mongoose    = require('mongoose'),
+    Passive     = mongoose.model('Passive');
+
+
+/**
+ * @api {get} /passives LIST Passives
+ * @apiName ListPassive
+ * @apiGroup PASSIVE
+ *
+ * @apiDescription List all existing passives.
+ *
+ * @apiSuccess {String} _id  id of the Passive.
+ * @apiSuccess {String} name  Name of the Passive.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Passive.
+ * @apiSuccess {String} description  Description of the Passive.
+ *
+ * @apiSuccessExample Success-Response
+ *     HTTP/1.1 200 OK
+ *     [
+ *          {
+ *              "_id": "",
+ *              "name": "",
+ *              "iconUrl": "",
+ *              "description": ""
+ *          }
+ *     ]
+ *
+ * @apiUse UnauthorizedError
+ */
 
 exports.list_all_passives = function(req, res) {
   Passive.find(req.query, function(err, passive) {
@@ -35,24 +62,29 @@ exports.create_a_passive = function(req, res) {
 
 
 /**
- * @api {get} /passives/:id Request Passive of given id.
+ * @api {get} /passives/:id GET Passive
  * @apiName GetPassive
- * @apiGroup Passive
+ * @apiGroup PASSIVE
+ *
+ * @apiDescription Request Passive of given id.
  *
  * @apiParam {Number} id Passive unique ID.
  *
+ * @apiSuccess {String} _id  id of the Passive.
  * @apiSuccess {String} name  Name of the Passive.
  * @apiSuccess {String} iconUrl  Url of icon corresponding to the Passive.
  * @apiSuccess {String} description  Description of the Passive.
  *
- * @apiSuccessExample Success-Response:
+ * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     {
- *       "name": "",
- *       "iconUrl": ""
- *       "description": ""
+ *         "_id": "",
+ *         "name": "",
+ *         "iconUrl": "",
+ *         "description": ""
  *     }
  *
+ * @apiUse UnauthorizedError
  * @apiUse PassiveNotFoundError
  */
 

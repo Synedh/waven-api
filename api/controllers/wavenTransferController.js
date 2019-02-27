@@ -5,15 +5,42 @@
  *
  * @apiError TransferNotFound Cannot find Transfer with given id.
  *
- * @apiErrorExample Error-Response:
+ * @apiErrorExample 404 Not Found
  *     HTTP/1.1 404 Not Found
  *     {
- *       "error": "Cannot find Transfer with id :id"
+ *         "error": "Cannot find Transfer with id :id"
  *     }
  */
 
-var mongoose = require('mongoose'),
-  Transfer = mongoose.model('Transfer');
+var mongoose    = require('mongoose'),
+    Transfer    = mongoose.model('Transfer');
+
+
+/**
+ * @api {get} /transfers LIST Transfers
+ * @apiName ListTransfer
+ * @apiGroup TRANSFER
+ *
+ * @apiDescription List all existing transfers.
+ *
+ * @apiSuccess {String} _id  id of the Transfer.
+ * @apiSuccess {String} name name of the Transfer.
+ * @apiSuccess {String} iconUrl  Url of icon corresponding to the Transfer.
+ * @apiSuccess {String} description  Description of the Transfer.
+ *
+ * @apiSuccessExample Success-Response
+ *     HTTP/1.1 200 OK
+ *     [
+ *         {
+ *             "_id": "",
+ *             "name": "",
+ *             "iconUrl": "",
+ *             "description": ""
+ *         }
+ *     ]
+ *
+ * @apiUse UnauthorizedError
+ */
 
 exports.list_all_transfers = function(req, res) {
   Transfer.find(req.query, function(err, transfer) {
@@ -35,24 +62,29 @@ exports.create_a_transfer = function(req, res) {
 
 
 /**
- * @api {get} /transfers/:id Request Transfer of given id.
+ * @api {get} /transfers/:id GET Transfer
  * @apiName GetTransfer
- * @apiGroup Transfer
+ * @apiGroup TRANSFER
+ *
+ * @apiDescription Request Transfer of given id.
  *
  * @apiParam {Number} id Transfer unique ID.
  *
+ * @apiSuccess {String} _id  id of the Transfer.
  * @apiSuccess {String} name name of the Transfer.
  * @apiSuccess {String} iconUrl  Url of icon corresponding to the Transfer.
  * @apiSuccess {String} description  Description of the Transfer.
  *
- * @apiSuccessExample Success-Response:
+ * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     {
- *       "name": "",
- *       "iconUrl": ""
- *       "description": ""
+ *         "_id": "",
+ *         "name": "",
+ *         "iconUrl": "",
+ *         "description": ""
  *     }
  *
+ * @apiUse UnauthorizedError
  * @apiUse TransferNotFoundError
  */
 

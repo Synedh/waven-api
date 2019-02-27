@@ -5,13 +5,16 @@ var mongoose = require('mongoose'),
 
 var spellSchema = new Schema({
     name: {
-        type: String,
+        type: String,,
+        default: ""
     },
     iconUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     description: {
-        type: String
+        type: String,
+        default: ""
     },
     element: {
         type: Schema.Types.ObjectId,
@@ -19,10 +22,16 @@ var spellSchema = new Schema({
     },
     cost: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     range: {
-        type: Number
+        type: Number,
+        default: null
+    },
+    line: {
+        type: Boolean,
+        default: false
     },
     stockpile: {
         type: Number,

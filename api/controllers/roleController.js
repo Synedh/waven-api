@@ -1,5 +1,39 @@
 'use strict';
 
+/**
+ * @apiDefine admin Admin access only
+ *     This request is allowed only for admin users.
+ */
+
+/**
+ * @apiDefine SuperUser SuperUser or Admin access only
+ *     This request is allowed for superusers or admin users.
+ */
+
+/**
+ * @apiDefine UnauthorizedError
+ *
+ * @apiError Unauthorized You cannot do this because you haven't authenticated.
+ *
+ * @apiErrorExample 401 Unauthorized
+ *     HTTP/1.1 401 Unauthorized
+ *     {
+ *         "error": "Unauthorized"
+ *     }
+ */
+
+/**
+ * @apiDefine ForbbidenError
+ *
+ * @apiError Forbbiden Valid credentials but you doesn't have access.
+ *
+ * @apiErrorExample 403 Forbbiden
+ *     HTTP/1.1 403 Forbbiden
+ *     {
+ *         "error": "Forbbiden"
+ *     }
+ */
+
 var mongoose    = require('mongoose'),
     Role        = mongoose.model('Role');
 

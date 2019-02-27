@@ -5,41 +5,51 @@ var mongoose = require('mongoose'),
 
 var fellowSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        default: ""
     },
     iconUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     imageUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     description: {
-        type: String
+        type: String,
+        default: ""
     },
     spells: {
         type: [Schema.Types.ObjectId],
-        ref: 'Spell'
+        ref: 'Spell',
+        default: []
     },
     passives: {
         type: [Schema.Types.ObjectId],
-        ref: 'Passive'
+        ref: 'Passive',
+        default: []
     },
     transfers: {
         type: [Schema.Types.ObjectId],
-        ref: 'Transfer'
+        ref: 'Transfer',
+        default: []
     },
     cost: {
         type: [Resource.schema],
         default: []
     },
     life: {
-        type: Number
+        type: Number,
+        default: 0
     },
     damage: {
-        type: Number
+        type: Number,
+        default: 0
     },
     movement: {
-        type: Number
+        type: Number,
+        default: 0
     }
 });
 

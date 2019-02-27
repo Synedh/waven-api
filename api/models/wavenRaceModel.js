@@ -4,27 +4,34 @@ var Schema = mongoose.Schema;
 
 var raceSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        default: ""
     },
     fullName: {
-        type: String
+        type: String,
+        default: ""
     },
     portraitUrl: {
         type: String,
+        default: ""
     },
     imageUrl: {
         type: String,
+        default: ""
     },
     description: {
         type: String,
+        default: ""
     },
     weapons: {
         type: [Schema.Types.ObjectId],
-        ref: 'Weapon'
+        ref: 'Weapon',
+        default: []
     },
     spells: {
         type:  [Schema.Types.ObjectId],
-        ref: 'Spell'
+        ref: 'Spell',
+        default: []
     }
 });
 

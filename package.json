@@ -1,44 +1,52 @@
 {
-  "name": "waven-api",
-  "version": "0.2.0",
-  "description": "Global Waven game API",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Synedh/waven-api.git"
-  },
-  "keywords": [
-    "REST",
-    "API",
-    "Waven",
-    "Game",
-    "NodeJS"
-  ],
-  "author": "Synedh",
-  "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/Synedh/waven-api/issues"
-  },
-  "homepage": "https://github.com/Synedh/waven-api#readme",
-  "apidoc": {
-    "title": "Waven API - Documentation",
-    "url" : "https://waven-api.synedh.fr"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4"
-  },
-  "dependencies": {
-    "apidoc": "^0.17.7",
-    "basic-auth": "^2.0.1",
-    "bcrypt": "^3.0.2",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "mongoose": "^5.3.6",
-    "morgan": "^1.9.1",
-    "rotating-file-stream": "^1.4.0"
-  }
+    "name": "Waven API",
+    "version": "0.3.0",
+    "description": "Global Waven game API",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js",
+        "doc": "apidoc -i api/ -o doc/",
+        "docprivate": "apidoc -i api/ -o docprivate/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Synedh/waven-api.git"
+    },
+    "keywords": [
+        "REST",
+        "API",
+        "Waven",
+        "Game",
+        "NodeJS"
+    ],
+    "author": "Synedh",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/Synedh/waven-api/issues"
+    },
+    "homepage": "https://github.com/Synedh/waven-api#readme",
+    "apidoc": {
+        "title": "Waven API - Documentation",
+        "url" : "https://waven-api.synedh.fr",
+        "sampleUrl": "https://waven-api.synedh.fr",
+        "template": {
+          "forceLanguage": "en",
+          "withCompare": false,
+          "withGenerator": false
+        }
+    },
+        "devDependencies": {
+        "nodemon": "^1.18.4"
+    },
+    "dependencies": {
+        "apidoc": "^0.17.7",
+        "basic-auth": "^2.0.1",
+        "bcrypt": "^3.0.2",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "mongoose": "^5.3.6",
+        "morgan": "^1.9.1",
+        "rotating-file-stream": "^1.4.0"
+    }
 }

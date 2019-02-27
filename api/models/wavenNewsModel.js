@@ -4,25 +4,32 @@ var Schema = mongoose.Schema;
 
 var newsSchema = new Schema({
     name: {
-        type: String
+        type: String,
+        default: ""
     },
     imageUrl: {
-        type: String
+        type: String,
+        default: ""
     },
     content: {
-        type: String
+        type: String,
+        default: ""
     },
     author: {
-        type: String
+        type: String,
+        default: ""
     },
     date: {
-        type: Date
+        type: Date,
+        default: null
     },
     tags: {
-        type: [String]
+        type: [String],
+        default: []
     },
     categorie: {
-        type: String
+        type: String,
+        default: ""
     }
 });
 

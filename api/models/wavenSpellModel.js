@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var spellSchema = new Schema({
     name: {
-        type: String,,
+        type: String,
         default: ""
     },
     iconUrl: {

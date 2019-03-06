@@ -141,6 +141,31 @@ def get_spells(html):
     return spells
 
 
+def get_news(html = None):
+    if not html:
+        html = get_page("https://blog.waven-game.com/fr/actualites")
+    matches = re.finditer(
+        r'<article .*?>(?:[\s\S]*?)<div class=\"featured-image\">\s*<a.*.src=\"(.*?)\?(?:[\s\S]*?)<a.*category.*?>(.*?)</a>(?:[\s\S]*?)<h2 class=\"entry-title\">[\s\S]*?>(.*?)<(?:[\s\S]*?)datetime=\"(.*?)\"(?:[\s\S]*?)<a class=\"url fn n\"[\s\S]*?title=\"(.*?)\"(?:[\s\S]*?)<p>(.*?)</p>(?:[\s\S]*?)<a class=\"more-link\".*?href=\"(.*?)\"(?:[\s\S]*?)<\/article>',
+        html.replace('&rsquo;', '\'').replace('​', '').replace('&#8211;', '-'),
+        re.MULTILINE
+    )
+    news = []
+    for match in matches:
+        news.append({
+            'name': match.group(3),
+            'directUrl': match.group(7),
+            'imageUrl': match.group(1),
+            'category': match.group(2),
+            'tags': [],
+            'author': match.group(5),
+            'date': match.group(4),
+            'content': match.group(6),
+        })
+    return news
+
+
+
+
 def post_weapons(weapons, class_id=None):
     posted_weapons = []
     for weapon in weapons:
@@ -182,6 +207,14 @@ def post_spells(spells, class_id=None):
         spells = get('classes', class_id)['spells']
         spells += posted_spells
         put('classes', class_id, {'spells': spells})
+
+
+def post_news(news):
+    for one_news in news:
+        test = get('news', params = {'date': one_news['date'], 'name': one_news['name']})
+        if len(test) == 0:
+            posted_news = post('news', one_news)
+            print('Successfully added news %s.' % posted_news['name'])
 
 
 def update_weapons(weapons):
@@ -226,13 +259,17 @@ def delete_all_weapons():
 
 
 if __name__ == '__main__':
+    if '-n' in sys.argv or '--news' in sys.argv:
+        post_news(get_news())
+    else:
+        pass
     # delete_all_spells()
     # print(json.dumps(get_weapons(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), indent=4))
-    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/sablier-de-xelor')), classes['xel'])
-    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/coeur-de-iop')), classes['iop'])
-    post_spells(get_spells(get_page('https://blog.waven-game.com/fr//ombre-de-sram')), classes['sram'])
-    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), classes['osa'])
-    post_spells(get_spells(get_page('https://blog.waven-game.com/fr/mains-deniripsa')), classes['eni'])
+    # post_spells(get_spells(get_page('https://blog.waven-game.com/fr/sablier-de-xelor')), classes['xel'])
+    # post_spells(get_spells(get_page('https://blog.waven-game.com/fr/coeur-de-iop')), classes['iop'])
+    # post_spells(get_spells(get_page('https://blog.waven-game.com/fr//ombre-de-sram')), classes['sram'])
+    # post_spells(get_spells(get_page('https://blog.waven-game.com/fr/fouet-dosamodas')), classes['osa'])
+    # post_spells(get_spells(get_page('https://blog.waven-game.com/fr/mains-deniripsa')), classes['eni'])
     # post_weapons(get_weapons(get_page('https://blog.waven-game.com/fr/mains-deniripsa')), classes['eni'])
     # post_spells(get_spells(get_page('https://blog.waven-game.com/fr/mains-deniripsa')), classes['eni'])
     # update_spells(get_spells(get_page('https://blog.waven-game.com/fr/sablier-de-xelor')))

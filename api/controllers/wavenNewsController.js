@@ -25,33 +25,35 @@ var mongoose    = require('mongoose'),
  *
  * @apiSuccess {String} _id  id of the News.
  * @apiSuccess {String} name  Name of the News.
+ * @apiSuccess {String} directUrl Direct link to the full news.
  * @apiSuccess {String} imageUrl  Url of icon corresponding to the News.
  * @apiSuccess {String} category  Category of the News.
  * @apiSuccess {String[]} tags  Tags of the News.
  * @apiSuccess {String} author  Author of the News.
  * @apiSuccess {Date} date  Publication date of the News.
- * @apiSuccess {String} content  Content of the News.
+ * @apiSuccess {String} content  Short content of the News.
  *
  * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     [
- *          {
- *              "_id": "",
- *              "name": "",
- *              "imageUrl": "",
- *              "category": "",
- *              "tags": [],
- *              "author": "",
- *              "Date": 0000,
- *              "content": ""
- *          }
+ *         {
+ *             "_id": "",
+ *             "name": "",
+ *             "directUrl": "",
+ *             "imageUrl": "",
+ *             "category": "",
+ *             "tags": [],
+ *             "author": "",
+ *             "date": 0000,
+ *             "content": ""
+ *         }
  *     ]
  *
  * @apiUse UnauthorizedError
  */
 
 exports.list_all_news = function(req, res) {
-  News.find(req.query, function(err, news) {
+  News.find(req.query).sort('-date').exec(function(err, news) {
     if (err)
       res.send(err);
     res.json(news);
@@ -80,23 +82,25 @@ exports.create_a_news = function(req, res) {
  *
  * @apiSuccess {String} _id  id of the News.
  * @apiSuccess {String} name  Name of the News.
+ * @apiSuccess {String} directUrl Direct link to the full news.
  * @apiSuccess {String} imageUrl  Url of icon corresponding to the News.
  * @apiSuccess {String} category  Category of the News.
  * @apiSuccess {String[]} tags  Tags of the News.
  * @apiSuccess {String} author  Author of the News.
  * @apiSuccess {Date} date  Publication date of the News.
- * @apiSuccess {String} content  Content of the News.
+ * @apiSuccess {String} content Short content of the News.
  *
  * @apiSuccessExample Success-Response
  *     HTTP/1.1 200 OK
  *     {
  *         "_id": "",
  *         "name": "",
+ *         "directUrl": "",
  *         "imageUrl": "",
  *         "category": "",
  *         "tags": [],
  *         "author": "",
- *         "Date": 0000,
+ *         "date": 0000,
  *         "content": ""
  *     }
  *

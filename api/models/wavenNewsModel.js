@@ -7,6 +7,10 @@ var newsSchema = new Schema({
         type: String,
         default: ""
     },
+    directUrl: {
+        type: String,
+        default: ""
+    },
     imageUrl: {
         type: String,
         default: ""
@@ -27,7 +31,7 @@ var newsSchema = new Schema({
         type: [String],
         default: []
     },
-    categorie: {
+    category: {
         type: String,
         default: ""
     }

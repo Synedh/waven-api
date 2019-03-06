@@ -1,5 +1,5 @@
 {
-    "name": "Waven API",
+    "name": "waven_api",
     "version": "0.3.0",
     "description": "Global Waven game API",
     "main": "index.js",

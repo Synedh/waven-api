@@ -17,7 +17,7 @@ var mongoose      = require('mongoose'),
 
 
 /**
- * @api {get} /weapons LIST WeaponSkins
+ * @api {get} /weaponSkins LIST WeaponSkins
  * @apiName ListWeaponSkin
  * @apiGroup WEAPONSKIN
  *
@@ -64,7 +64,7 @@ exports.create_a_weapon_skin = function(req, res) {
 
 
 /**
- * @api {get} /weapons/:id GET WeaponSkin
+ * @api {get} /weaponSkins/:id GET WeaponSkin
  * @apiName GetWeaponSkin
  * @apiGroup WEAPONSKIN
  *
